@@ -2,8 +2,8 @@ package com.github.anilganipineni.scheduler.examples.task.schedule;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelayParser;
+import com.github.anilganipineni.scheduler.parser.FixedDelayParser;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 
 import java.util.Optional;
 

@@ -1,13 +1,13 @@
 package com.github.anilganipineni.scheduler.examples.task.schedule;
 
-import org.junit.jupiter.api.Test;
-
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import com.github.anilganipineni.scheduler.exception.UnrecognizableSchedule;
 
 
 public class UnrecognizableScheduleTest {
@@ -19,10 +19,10 @@ public class UnrecognizableScheduleTest {
     }
 
     private static void assertMessage(String scheduleString, String expectedMessage) {
-        assertEquals(expectedMessage, new Schedules.UnrecognizableSchedule(scheduleString).getMessage());
+        assertEquals(expectedMessage, new UnrecognizableSchedule(scheduleString).getMessage());
     }
 
     private static void assertMessage(String scheduleString, List<String> examples, String expectedMessage) {
-        assertEquals(expectedMessage, new Schedules.UnrecognizableSchedule(scheduleString, examples).getMessage());
+        assertEquals(expectedMessage, new UnrecognizableSchedule(scheduleString, examples).getMessage());
     }
 }

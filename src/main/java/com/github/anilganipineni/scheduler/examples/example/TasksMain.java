@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.HsqlTestDatabaseExtension;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
 
 public class TasksMain {
     private static final Logger LOG = LoggerFactory.getLogger(TasksMain.class);

@@ -11,11 +11,11 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 
-import com.github.anilganipineni.scheduler.task.schedule.Daily;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
-import com.github.anilganipineni.scheduler.task.schedule.Parser;
-import com.github.anilganipineni.scheduler.task.schedule.Schedule;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
+import com.github.anilganipineni.scheduler.exception.UnrecognizableSchedule;
+import com.github.anilganipineni.scheduler.parser.Parser;
+import com.github.anilganipineni.scheduler.schedule.Daily;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
+import com.github.anilganipineni.scheduler.schedule.Schedule;
 
 class ScheduleParsersHelper {
     private ScheduleParsersHelper() {
@@ -36,7 +36,7 @@ class ScheduleParsersHelper {
         try {
             parser.parse(schedule);
             Assertions.fail("Should have thrown UnrecognizableSchedule for schedule '" + schedule + "'");
-        } catch (Schedules.UnrecognizableSchedule e) {
+        } catch (UnrecognizableSchedule e) {
         	MatcherAssert.assertThat(e.getMessage(), CoreMatchers.containsString("Unrecognized schedule"));
             MatcherAssert.assertThat(e.getMessage(), CoreMatchers.containsString(parser.examples().toString()));
         }

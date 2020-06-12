@@ -21,13 +21,13 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerName;
+import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.Task;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
 import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionOperations;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
 import com.google.common.collect.Lists;
 
 
@@ -79,7 +79,7 @@ public class ClusterTest {
     public void test_concurrency_recurring() throws InterruptedException {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(10), () -> {
 
-            final RecurringTask task1 = TaskFactory.recurring("task1", Schedules.fixedDelay(Duration.ofMillis(0)))
+            final RecurringTask task1 = TaskFactory.recurring("task1", ScheduleFactory.fixedDelay(Duration.ofMillis(0)))
                 .execute((taskInstance, executionContext) -> {
                     // do nothing
                     // System.out.println(counter.incrementAndGet() + " " + Thread.currentThread().getName());

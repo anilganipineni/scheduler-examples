@@ -22,10 +22,10 @@ import com.github.anilganipineni.scheduler.TaskResolver;
 import com.github.anilganipineni.scheduler.Waiter;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.dao.rdbms.JdbcTaskRepository;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.Task;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.testhelper.SettableClock;
 import com.google.common.util.concurrent.MoreExecutors;
 

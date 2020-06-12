@@ -1,23 +1,25 @@
 package com.github.anilganipineni.scheduler.examples.task;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.jupiter.api.Test;
-
-import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
-import com.github.anilganipineni.scheduler.task.schedule.Daily;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
-import com.github.anilganipineni.scheduler.task.schedule.Schedule;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.fail;
+import org.hamcrest.CoreMatchers;
+import org.junit.jupiter.api.Test;
+
+import com.github.anilganipineni.scheduler.exception.UnrecognizableSchedule;
+import com.github.anilganipineni.scheduler.schedule.Daily;
+import com.github.anilganipineni.scheduler.schedule.Schedule;
+import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
+import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
+
+import ch.qos.logback.core.util.FixedDelay;
 
 public class SchedulesTest {
     private static final Instant NOON_TODAY = ZonedDateTime.now().withHour(12).withMinute(0).withSecond(0).withNano(0).toInstant();
@@ -60,16 +62,16 @@ public class SchedulesTest {
 
     @SuppressWarnings("rawtypes")
     private Schedule assertParsable(String schedule, Class clazz) {
-        Schedule parsed = Schedules.parseSchedule(schedule);
+        Schedule parsed = ScheduleFactory.parseSchedule(schedule);
         assertThat(parsed, instanceOf(clazz));
         return parsed;
     }
 
     private void assertIllegalArgument(String schedule) {
         try {
-            Schedules.parseSchedule(schedule);
+        	ScheduleFactory.parseSchedule(schedule);
             fail("Should have thrown UnrecognizableSchedule for schedule '" + schedule + "'");
-        } catch (Schedules.UnrecognizableSchedule e) {
+        } catch (UnrecognizableSchedule e) {
             assertThat(e.getMessage(), CoreMatchers.containsString("Unrecognized schedule"));
         }
     }

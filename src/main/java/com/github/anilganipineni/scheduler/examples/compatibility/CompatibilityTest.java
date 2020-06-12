@@ -33,9 +33,9 @@ import com.github.anilganipineni.scheduler.examples.DbUtils;
 import com.github.anilganipineni.scheduler.examples.StopSchedulerExtension;
 import com.github.anilganipineni.scheduler.examples.TestTasks;
 import com.github.anilganipineni.scheduler.examples.TestTasks.DoNothingHandler;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
 import com.google.common.collect.Lists;
 
 

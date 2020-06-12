@@ -9,17 +9,17 @@ import org.slf4j.LoggerFactory;
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.HsqlTestDatabaseExtension;
+import com.github.anilganipineni.scheduler.schedule.Schedule;
+import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
-import com.github.anilganipineni.scheduler.task.schedule.Schedule;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
 
 public class CronMain {
     private static final Logger LOG = LoggerFactory.getLogger(CronMain.class);
 
     private static void example(SchedulerDataSource dataSource) {
 
-        Schedule cron = Schedules.cron("*/10 * * * * ?");
+        Schedule cron = ScheduleFactory.cron("*/10 * * * * ?");
         RecurringTask cronTask = TaskFactory.recurring("cron-task", cron)
                 .execute((taskInstance, executionContext) -> {
                     System.out.println(Instant.now().getEpochSecond() + "s  -  Cron-schedule!");

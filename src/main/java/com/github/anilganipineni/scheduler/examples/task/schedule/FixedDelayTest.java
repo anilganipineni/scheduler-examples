@@ -3,7 +3,7 @@ package com.github.anilganipineni.scheduler.examples.task.schedule;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 
 import java.time.Duration;
 

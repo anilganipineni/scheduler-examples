@@ -10,11 +10,10 @@ import java.time.ZonedDateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.github.anilganipineni.scheduler.schedule.CronSchedule;
+import com.github.anilganipineni.scheduler.schedule.Schedule;
+import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
-import com.github.anilganipineni.scheduler.task.schedule.CronSchedule;
-import com.github.anilganipineni.scheduler.task.schedule.Schedule;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
-
 
 public class CronTest {
 
@@ -77,7 +76,7 @@ public class CronTest {
     }
 
     private void assertNextExecutionTime(ZonedDateTime timeDone, String cronPattern, ZoneId zoneId, ZonedDateTime expectedTime) {
-        assertNextExecutionTime(timeDone, expectedTime, Schedules.cron(cronPattern, zoneId));
+        assertNextExecutionTime(timeDone, expectedTime, ScheduleFactory.cron(cronPattern, zoneId));
     }
 
     private void assertNextExecutionTime(ZonedDateTime timeDone, ZonedDateTime expectedTime, Schedule schedule) {

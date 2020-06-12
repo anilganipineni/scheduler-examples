@@ -19,9 +19,9 @@ import com.github.anilganipineni.scheduler.ScheduledExecution;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.EmbeddedPostgresqlExtension;
 import com.github.anilganipineni.scheduler.examples.TestTasks;
+import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
 import com.github.anilganipineni.scheduler.testhelper.ManualScheduler;
 import com.github.anilganipineni.scheduler.testhelper.SettableClock;
 import com.github.anilganipineni.scheduler.testhelper.TestHelper;
@@ -46,7 +46,7 @@ public class RecurringTaskTest {
     @Test
     public void should_have_starttime_according_to_schedule_by_default() {
 
-        RecurringTask recurringTask = TaskFactory.recurring("recurring-a", Schedules.daily(LocalTime.of(23, 59))).execute(TestTasks.DO_NOTHING);
+        RecurringTask recurringTask = TaskFactory.recurring("recurring-a", ScheduleFactory.daily(LocalTime.of(23, 59))).execute(TestTasks.DO_NOTHING);
 
         ManualScheduler scheduler = TestHelper.createManualScheduler(postgres.getSchedulerDataSource())
                 .clock(clock)
@@ -63,7 +63,7 @@ public class RecurringTaskTest {
     @Test
     public void should_have_starttime_now_if_overridden_by_schedule() {
 
-        RecurringTask recurringTask = TaskFactory.recurring("recurring-a", Schedules.fixedDelay(Duration.ofHours(1)))
+        RecurringTask recurringTask = TaskFactory.recurring("recurring-a", ScheduleFactory.fixedDelay(Duration.ofHours(1)))
                 .execute(TestTasks.DO_NOTHING);
 
         ManualScheduler scheduler = TestHelper.createManualScheduler(postgres.getSchedulerDataSource())

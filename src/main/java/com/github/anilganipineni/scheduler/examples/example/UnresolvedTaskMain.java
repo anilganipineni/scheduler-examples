@@ -12,20 +12,20 @@ import com.github.anilganipineni.scheduler.SchedulerClient;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.exception.SchedulerException;
+import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
-import com.github.anilganipineni.scheduler.task.schedule.Schedules;
 
 public class UnresolvedTaskMain {
     private static final Logger LOG = LoggerFactory.getLogger(UnresolvedTaskMain.class);
 
     private static void example(SchedulerDataSource dataSource) {
 
-        RecurringTask unresolvedTask = TaskFactory.recurring("unresolved1", Schedules.fixedDelay(Duration.ofSeconds(1)))
+        RecurringTask unresolvedTask = TaskFactory.recurring("unresolved1", ScheduleFactory.fixedDelay(Duration.ofSeconds(1)))
                 .execute((taskInstance, executionContext) -> {
                     System.out.println("Ran");
                 });
-        RecurringTask unresolvedTask2 = TaskFactory.recurring("unresolved2", Schedules.fixedDelay(Duration.ofSeconds(1)))
+        RecurringTask unresolvedTask2 = TaskFactory.recurring("unresolved2", ScheduleFactory.fixedDelay(Duration.ofSeconds(1)))
             .execute((taskInstance, executionContext) -> {
                 System.out.println("Ran");
             });

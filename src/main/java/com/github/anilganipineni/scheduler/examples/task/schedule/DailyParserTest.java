@@ -1,18 +1,18 @@
 package com.github.anilganipineni.scheduler.examples.task.schedule;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import com.github.anilganipineni.scheduler.task.schedule.Daily;
-import com.github.anilganipineni.scheduler.task.schedule.DailyParser;
+import static com.github.anilganipineni.scheduler.examples.task.schedule.ScheduleParsersHelper.assertScheduleNotPresent;
+import static com.github.anilganipineni.scheduler.examples.task.schedule.ScheduleParsersHelper.assertSchedulePresent;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Optional;
 
-import static com.github.anilganipineni.scheduler.examples.task.schedule.ScheduleParsersHelper.assertScheduleNotPresent;
-import static com.github.anilganipineni.scheduler.examples.task.schedule.ScheduleParsersHelper.assertSchedulePresent;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import com.github.anilganipineni.scheduler.parser.DailyParser;
+import com.github.anilganipineni.scheduler.schedule.Daily;
 
 
 public class DailyParserTest {

@@ -9,9 +9,9 @@ import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
 
 
 public class ExecutionTest {

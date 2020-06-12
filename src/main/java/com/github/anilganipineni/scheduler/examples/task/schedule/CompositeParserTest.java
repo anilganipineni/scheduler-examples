@@ -1,9 +1,9 @@
 package com.github.anilganipineni.scheduler.examples.task.schedule;
 
 import com.github.anilganipineni.scheduler.examples.task.schedule.ScheduleParsersHelper.FakeParser;
-import com.github.anilganipineni.scheduler.task.schedule.CompositeParser;
-import com.github.anilganipineni.scheduler.task.schedule.Parser;
-import com.github.anilganipineni.scheduler.task.schedule.Schedule;
+import com.github.anilganipineni.scheduler.parser.CompositeParser;
+import com.github.anilganipineni.scheduler.parser.Parser;
+import com.github.anilganipineni.scheduler.schedule.Schedule;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Assertions;

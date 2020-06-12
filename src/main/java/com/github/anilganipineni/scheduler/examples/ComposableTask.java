@@ -18,6 +18,7 @@ package com.github.anilganipineni.scheduler.examples;
 import java.time.Duration;
 
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
+import com.github.anilganipineni.scheduler.schedule.Schedule;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.Task;
@@ -27,7 +28,6 @@ import com.github.anilganipineni.scheduler.task.handler.FailureHandler;
 import com.github.anilganipineni.scheduler.task.handler.OnFailureRetryLater;
 import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionContext;
-import com.github.anilganipineni.scheduler.task.schedule.Schedule;
 
 @Deprecated
 public class ComposableTask {

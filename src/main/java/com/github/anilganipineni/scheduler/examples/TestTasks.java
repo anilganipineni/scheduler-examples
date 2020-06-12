@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
+import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;
@@ -18,7 +19,6 @@ import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionContext;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionOperations;
-import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
 
 public class TestTasks {
 

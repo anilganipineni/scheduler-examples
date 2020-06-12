@@ -13,12 +13,10 @@ import java.time.ZonedDateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.github.anilganipineni.scheduler.schedule.Daily;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
-import com.github.anilganipineni.scheduler.task.schedule.Daily;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
-
-
 
 public class DailyTest {
 
