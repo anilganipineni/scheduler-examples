@@ -1,10 +1,15 @@
 package com.github.anilganipineni.scheduler.examples.task.schedule;
 
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.Assertions;
 
 import com.github.anilganipineni.scheduler.task.schedule.Daily;
 import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;
@@ -12,23 +17,14 @@ import com.github.anilganipineni.scheduler.task.schedule.Parser;
 import com.github.anilganipineni.scheduler.task.schedule.Schedule;
 import com.github.anilganipineni.scheduler.task.schedule.Schedules;
 
-import static java.time.LocalTime.MIDNIGHT;
-import static java.time.LocalTime.NOON;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-
-
 class ScheduleParsersHelper {
     private ScheduleParsersHelper() {
     }
 
     static final String ANY_SCHEDULE_STRING = "ANY STRING";
     static final Schedule FIXED_DELAY = FixedDelay.of(Duration.ZERO);
-    static final Schedule DAILY_AT_MIDNIGHT = new Daily(MIDNIGHT);
-    static final Schedule DAILY_AT_NOON = new Daily(NOON);
+    static final Schedule DAILY_AT_MIDNIGHT = new Daily(LocalTime.MIDNIGHT);
+    static final Schedule DAILY_AT_NOON = new Daily(LocalTime.NOON);
 
     static final Parser FIXED_DELAY_PARSER = new FakeParser(FIXED_DELAY);
     static final Parser DAILY_PARSER = new FakeParser(DAILY_AT_MIDNIGHT);
@@ -39,26 +35,26 @@ class ScheduleParsersHelper {
     static void assertUnrecognizableSchedule(Parser parser, String schedule) {
         try {
             parser.parse(schedule);
-            fail("Should have thrown UnrecognizableSchedule for schedule '" + schedule + "'");
+            Assertions.fail("Should have thrown UnrecognizableSchedule for schedule '" + schedule + "'");
         } catch (Schedules.UnrecognizableSchedule e) {
-            assertThat(e.getMessage(), containsString("Unrecognized schedule"));
-            assertThat(e.getMessage(), containsString(parser.examples().toString()));
+        	MatcherAssert.assertThat(e.getMessage(), CoreMatchers.containsString("Unrecognized schedule"));
+            MatcherAssert.assertThat(e.getMessage(), CoreMatchers.containsString(parser.examples().toString()));
         }
     }
 
     static void assertSchedulePresent(Parser parser, String schedule) {
         try {
-            assertTrue(parser.parse(schedule).isPresent());
+        	Assertions.assertTrue(parser.parse(schedule).isPresent());
         } catch (Exception e) {
-            fail("Should not have thrown any Exception for schedule '" + schedule + "'. Exception: " + e.getMessage());
+        	Assertions.fail("Should not have thrown any Exception for schedule '" + schedule + "'. Exception: " + e.getMessage());
         }
     }
 
     static void assertScheduleNotPresent(Parser parser, String schedule) {
         try {
-            assertFalse(parser.parse(schedule).isPresent());
+        	Assertions.assertFalse(parser.parse(schedule).isPresent());
         } catch (Exception e) {
-            fail("Should not have thrown any Exception for schedule '" + schedule + "'. Exception: " + e.getMessage());
+        	Assertions.fail("Should not have thrown any Exception for schedule '" + schedule + "'. Exception: " + e.getMessage());
         }
     }
 
