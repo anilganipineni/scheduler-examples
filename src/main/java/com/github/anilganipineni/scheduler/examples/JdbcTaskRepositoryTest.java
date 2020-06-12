@@ -28,11 +28,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.SchedulerName;
+import com.github.anilganipineni.scheduler.StatsRegistry.SchedulerStatsEvent;
 import com.github.anilganipineni.scheduler.TaskResolver;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.dao.rdbms.JdbcTaskRepository;
 import com.github.anilganipineni.scheduler.examples.helper.TestableRegistry;
-import com.github.anilganipineni.scheduler.stats.StatsRegistry.SchedulerStatsEvent;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.Task;
 

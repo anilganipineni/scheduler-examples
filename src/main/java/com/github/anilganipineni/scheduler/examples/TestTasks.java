@@ -7,11 +7,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.LoggerFactory;
 
+import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
-import com.github.anilganipineni.scheduler.stats.StatsRegistry;
-import com.github.anilganipineni.scheduler.task.CompletionHandler;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
+import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;
 import com.github.anilganipineni.scheduler.task.handler.FailureHandler;
 import com.github.anilganipineni.scheduler.task.handler.OnCompleteRemove;
 import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;

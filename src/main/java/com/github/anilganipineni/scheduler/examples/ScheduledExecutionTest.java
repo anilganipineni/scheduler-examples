@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import com.github.anilganipineni.scheduler.ScheduledExecution;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
+import com.github.anilganipineni.scheduler.exception.DataClassMismatchException;
 import com.github.anilganipineni.scheduler.exception.SchedulerException;
 
 public class ScheduledExecutionTest {
@@ -43,7 +44,7 @@ public class ScheduledExecutionTest {
 
     @Test
     public void test_data_class_type_not_equals() {
-        assertThrows(ScheduledExecution.DataClassMismatchException.class, () -> {
+        assertThrows(DataClassMismatchException.class, () -> {
 
             Instant now = Instant.now();
             ScheduledTasks execution = new ScheduledTasks(now, "id1", "1");

@@ -2,7 +2,7 @@ package com.github.anilganipineni.scheduler.examples.helper;
 
 import java.util.concurrent.CountDownLatch;
 
-import com.github.anilganipineni.scheduler.stats.StatsRegistry;
+import com.github.anilganipineni.scheduler.StatsRegistry;
 
 public class ExecutionCompletedCondition implements TestableRegistry.Condition {
 

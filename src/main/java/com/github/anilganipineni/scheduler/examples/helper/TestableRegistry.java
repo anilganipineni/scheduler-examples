@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.anilganipineni.scheduler.stats.StatsRegistry;
+import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
 
 public class TestableRegistry implements StatsRegistry {

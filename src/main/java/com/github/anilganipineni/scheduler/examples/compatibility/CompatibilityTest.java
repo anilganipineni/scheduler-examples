@@ -1,6 +1,6 @@
 package com.github.anilganipineni.scheduler.examples.compatibility;
 
-import static com.github.anilganipineni.scheduler.dao.rdbms.JdbcTaskRepository.TABLE_NAME;
+import static com.github.anilganipineni.scheduler.dao.SchedulerRepository.TABLE_NAME;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerName;
+import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
@@ -32,7 +33,6 @@ import com.github.anilganipineni.scheduler.examples.DbUtils;
 import com.github.anilganipineni.scheduler.examples.StopSchedulerExtension;
 import com.github.anilganipineni.scheduler.examples.TestTasks;
 import com.github.anilganipineni.scheduler.examples.TestTasks.DoNothingHandler;
-import com.github.anilganipineni.scheduler.stats.StatsRegistry;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.schedule.FixedDelay;

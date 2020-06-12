@@ -1,18 +1,18 @@
 package com.github.anilganipineni.scheduler.examples;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
+import java.time.Duration;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.github.anilganipineni.scheduler.RunUntilShutdown;
 import com.github.anilganipineni.scheduler.SchedulerState;
+import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.Waiter;
-import com.github.anilganipineni.scheduler.stats.StatsRegistry;
-
-import java.time.Duration;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 
 public class RunUntilShutdownTest {
 

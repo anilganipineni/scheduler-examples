@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
+import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.examples.DbUtils;
 import com.github.anilganipineni.scheduler.examples.EmbeddedPostgresqlExtension;
 import com.github.anilganipineni.scheduler.examples.TestTasks;
 import com.github.anilganipineni.scheduler.examples.helper.TestableRegistry;
-import com.github.anilganipineni.scheduler.stats.StatsRegistry;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
 import com.github.anilganipineni.scheduler.testhelper.ManualScheduler;
