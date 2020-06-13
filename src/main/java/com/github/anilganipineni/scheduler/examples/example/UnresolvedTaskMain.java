@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerClient;
+import com.github.anilganipineni.scheduler.SchedulerClientBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.exception.SchedulerException;
@@ -30,7 +31,7 @@ public class UnresolvedTaskMain {
                 System.out.println("Ran");
             });
 
-        SchedulerClient client = SchedulerClient.Builder.create(dataSource).build();
+        SchedulerClient client = SchedulerClientBuilder.create(dataSource).build();
         client.schedule(unresolvedTask.instance(RecurringTask.INSTANCE), Instant.now());
         client.schedule(unresolvedTask2.instance(RecurringTask.INSTANCE), Instant.now().plusSeconds(10));
 

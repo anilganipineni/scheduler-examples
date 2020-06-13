@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.Clock;
+import com.github.anilganipineni.scheduler.ExecutionComplete;
+import com.github.anilganipineni.scheduler.ExecutionContext;
+import com.github.anilganipineni.scheduler.ExecutionOperations;
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.StatsRegistry.SchedulerStatsEvent;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
@@ -20,9 +23,6 @@ import com.github.anilganipineni.scheduler.task.CustomTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
 import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;
 import com.github.anilganipineni.scheduler.task.handler.ExecutionHandler;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionContext;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionOperations;
 
 public class DeadExecutionTest {
 

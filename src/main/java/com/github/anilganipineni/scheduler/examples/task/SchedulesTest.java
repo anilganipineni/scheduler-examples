@@ -13,11 +13,11 @@ import java.time.ZonedDateTime;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 
+import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.exception.UnrecognizableSchedule;
 import com.github.anilganipineni.scheduler.schedule.Daily;
 import com.github.anilganipineni.scheduler.schedule.Schedule;
 import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
 
 import ch.qos.logback.core.util.FixedDelay;
 

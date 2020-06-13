@@ -1,6 +1,6 @@
 package com.github.anilganipineni.scheduler.examples;
 
-import static com.github.anilganipineni.scheduler.dao.rdbms.PreparedStatementSetter.NOOP;
+import static com.github.anilganipineni.scheduler.dao.PreparedStatementSetter.NOOP;
 
 import java.io.IOException;
 import java.util.function.Consumer;
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 import com.github.anilganipineni.scheduler.dao.CassandraDataSource;
 import com.github.anilganipineni.scheduler.dao.DataSourceType;
+import com.github.anilganipineni.scheduler.dao.JdbcRunner;
+import com.github.anilganipineni.scheduler.dao.Mappers;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
-import com.github.anilganipineni.scheduler.dao.rdbms.JdbcRunner;
-import com.github.anilganipineni.scheduler.dao.rdbms.Mappers;
 import com.opentable.db.postgres.embedded.EmbeddedPostgres;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -28,7 +28,7 @@ public class EmbeddedPostgresqlExtension implements AfterEachCallback {
     private final Consumer<DataSource> cleanupAfter;
 
     public EmbeddedPostgresqlExtension() {
-        this(DbUtils.runSqlResource("/postgresql_tables.sql"), DbUtils::clearTables);
+        this(ExampleUtils.runSqlResource("/postgresql_tables.sql"), ExampleUtils::clearTables);
     }
 
     public EmbeddedPostgresqlExtension(Consumer<DataSource> initializeSchema, Consumer<DataSource> cleanupAfter) {

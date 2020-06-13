@@ -1,6 +1,6 @@
 package com.github.anilganipineni.scheduler.examples;
 
-import static com.github.anilganipineni.scheduler.dao.rdbms.PreparedStatementSetter.NOOP;
+import static com.github.anilganipineni.scheduler.dao.PreparedStatementSetter.NOOP;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -14,10 +14,10 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
+import com.github.anilganipineni.scheduler.dao.JdbcRunner;
+import com.github.anilganipineni.scheduler.dao.JdbcTaskRepository;
+import com.github.anilganipineni.scheduler.dao.ResultSetMapper;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
-import com.github.anilganipineni.scheduler.dao.rdbms.JdbcRunner;
-import com.github.anilganipineni.scheduler.dao.rdbms.JdbcTaskRepository;
-import com.github.anilganipineni.scheduler.dao.rdbms.ResultSetMapper;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.Task;
 
@@ -40,7 +40,7 @@ public class CustomTableNameTest {
         knownTasks.add(oneTimeTask);
         taskRepository = new JdbcTaskRepository(DB.getDataSource(), new TaskResolver(StatsRegistry.NOOP, knownTasks), new SchedulerName.Fixed(SCHEDULER_NAME));
 
-        DbUtils.runSqlResource("postgresql_custom_tablename.sql").accept(DB.getDataSource());
+        ExampleUtils.runSqlResource("postgresql_custom_tablename.sql").accept(DB.getDataSource());
     }
 
     @Test

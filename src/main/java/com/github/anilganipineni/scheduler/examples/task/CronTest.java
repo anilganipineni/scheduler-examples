@@ -10,10 +10,10 @@ import java.time.ZonedDateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.schedule.CronSchedule;
 import com.github.anilganipineni.scheduler.schedule.Schedule;
 import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionComplete;
 
 public class CronTest {
 

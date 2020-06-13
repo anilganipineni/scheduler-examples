@@ -15,13 +15,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
+import com.github.anilganipineni.scheduler.ExecutionContext;
 import com.github.anilganipineni.scheduler.ScheduledExecution;
 import com.github.anilganipineni.scheduler.SchedulerClient;
+import com.github.anilganipineni.scheduler.SchedulerClientBuilder;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.TestTasks.SavingHandler;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionContext;
 import com.github.anilganipineni.scheduler.testhelper.ManualScheduler;
 import com.github.anilganipineni.scheduler.testhelper.SettableClock;
 import com.github.anilganipineni.scheduler.testhelper.TestHelper;
@@ -71,7 +72,7 @@ public class SchedulerClientTest {
 
     @Test
     public void client_should_be_able_to_schedule_executions() {
-        SchedulerClient client = SchedulerClient.Builder.create(DB.getSchedulerDataSource()).build();
+        SchedulerClient client = SchedulerClientBuilder.create(DB.getSchedulerDataSource()).build();
         client.schedule(oneTimeTaskA.instance("1"), settableClock.now());
 
         scheduler.runAnyDueExecutions();
@@ -92,7 +93,7 @@ public class SchedulerClientTest {
 
     @Test
     public void client_should_be_able_to_fetch_executions_for_task() {
-        SchedulerClient client = SchedulerClient.Builder.create(DB.getSchedulerDataSource(), oneTimeTaskA, oneTimeTaskB).build();
+        SchedulerClient client = SchedulerClientBuilder.create(DB.getSchedulerDataSource(), oneTimeTaskA, oneTimeTaskB).build();
         client.schedule(oneTimeTaskA.instance("1"), settableClock.now());
         client.schedule(oneTimeTaskA.instance("2"), settableClock.now());
         client.schedule(oneTimeTaskB.instance("10"), settableClock.now());
@@ -106,7 +107,7 @@ public class SchedulerClientTest {
 
     @Test
     public void client_should_be_able_to_fetch_single_scheduled_execution() {
-        SchedulerClient client = SchedulerClient.Builder.create(DB.getSchedulerDataSource(), oneTimeTaskA).build();
+        SchedulerClient client = SchedulerClientBuilder.create(DB.getSchedulerDataSource(), oneTimeTaskA).build();
         client.schedule(oneTimeTaskA.instance("1"), settableClock.now());
 
         assertThat(client.getScheduledExecution(new ScheduledTasks(oneTimeTaskA.getName(), "1")), not(OptionalMatchers.empty()));

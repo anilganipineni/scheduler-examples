@@ -17,17 +17,17 @@ package com.github.anilganipineni.scheduler.examples;
 
 import java.time.Duration;
 
+import com.github.anilganipineni.scheduler.ExecutionContext;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.schedule.Schedule;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.Task;
 import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;
-import com.github.anilganipineni.scheduler.task.handler.DeadExecutionHandler;
 import com.github.anilganipineni.scheduler.task.handler.FailureHandler;
 import com.github.anilganipineni.scheduler.task.handler.OnFailureRetryLater;
+import com.github.anilganipineni.scheduler.task.handler.ReviveDeadExecution;
 import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionContext;
 
 @Deprecated
 public class ComposableTask {
@@ -65,7 +65,7 @@ public class ComposableTask {
      * @return
      */
     public static  Task customTask(String name, CompletionHandler completionHandler, VoidExecutionHandler executionHandler) {
-        return new Task(name, new OnFailureRetryLater(Duration.ofMinutes(5)), new DeadExecutionHandler.ReviveDeadExecution()) {
+        return new Task(name, new OnFailureRetryLater(Duration.ofMinutes(5)), new ReviveDeadExecution()) {
             @Override
 			public CompletionHandler execute(ScheduledTasks task, ExecutionContext context) {
                 executionHandler.execute(task, context);
@@ -81,7 +81,7 @@ public class ComposableTask {
      * @return
      */
     public static  Task customTask(String name, CompletionHandler completionHandler, FailureHandler failureHandler, VoidExecutionHandler executionHandler) {
-        return new Task(name, failureHandler, new DeadExecutionHandler.ReviveDeadExecution()) {
+        return new Task(name, failureHandler, new ReviveDeadExecution()) {
             @Override
 			public CompletionHandler execute(ScheduledTasks task, ExecutionContext context) {
                 executionHandler.execute(task, context);

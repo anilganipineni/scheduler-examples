@@ -17,20 +17,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
+import com.github.anilganipineni.scheduler.ExecutionContext;
+import com.github.anilganipineni.scheduler.ExecutionOperations;
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
 import com.github.anilganipineni.scheduler.Waiter;
+import com.github.anilganipineni.scheduler.dao.JdbcTaskRepository;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
-import com.github.anilganipineni.scheduler.dao.rdbms.JdbcTaskRepository;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.Task;
 import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;
 import com.github.anilganipineni.scheduler.task.handler.DeadExecutionHandler;
+import com.github.anilganipineni.scheduler.task.handler.ReviveDeadExecution;
 import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionContext;
-import com.github.anilganipineni.scheduler.task.helper.ExecutionOperations;
 import com.github.anilganipineni.scheduler.testhelper.SettableClock;
 import com.google.common.util.concurrent.MoreExecutors;
 
@@ -143,7 +144,7 @@ public class DeadExecutionsTest {
         }
     }
 
-    public static class ReviveDead extends DeadExecutionHandler.ReviveDeadExecution {
+    public static class ReviveDead extends ReviveDeadExecution {
         public int timesCalled = 0;
 
         @Override

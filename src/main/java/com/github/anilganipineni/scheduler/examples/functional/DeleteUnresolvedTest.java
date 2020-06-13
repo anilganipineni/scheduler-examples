@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.StatsRegistry;
-import com.github.anilganipineni.scheduler.examples.DbUtils;
 import com.github.anilganipineni.scheduler.examples.EmbeddedPostgresqlExtension;
+import com.github.anilganipineni.scheduler.examples.ExampleUtils;
 import com.github.anilganipineni.scheduler.examples.TestTasks;
 import com.github.anilganipineni.scheduler.examples.helper.TestableRegistry;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
@@ -60,14 +60,14 @@ public class DeleteUnresolvedTest {
         scheduler.runAnyDueExecutions();
         assertEquals(1, testableRegistry.getCount(StatsRegistry.SchedulerStatsEvent.UNRESOLVED_TASK));
 
-        assertEquals(1, DbUtils.countExecutions(postgres.getDataSource()));
+        assertEquals(1, ExampleUtils.countExecutions(postgres.getDataSource()));
 
         scheduler.runDeadExecutionDetection();
-        assertEquals(1, DbUtils.countExecutions(postgres.getDataSource()));
+        assertEquals(1, ExampleUtils.countExecutions(postgres.getDataSource()));
 
         clock.set(clock.now().plus(Duration.ofDays(30)));
         scheduler.runDeadExecutionDetection();
-        assertEquals(0, DbUtils.countExecutions(postgres.getDataSource()));
+        assertEquals(0, ExampleUtils.countExecutions(postgres.getDataSource()));
 
         scheduler.runDeadExecutionDetection();
     }

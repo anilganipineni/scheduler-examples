@@ -1,6 +1,5 @@
 package com.github.anilganipineni.scheduler.examples.compatibility;
 
-import static com.github.anilganipineni.scheduler.dao.SchedulerRepository.TABLE_NAME;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
@@ -26,10 +25,11 @@ import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
+import com.github.anilganipineni.scheduler.dao.DbUtils;
+import com.github.anilganipineni.scheduler.dao.JdbcTaskRepository;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
-import com.github.anilganipineni.scheduler.dao.rdbms.JdbcTaskRepository;
-import com.github.anilganipineni.scheduler.examples.DbUtils;
+import com.github.anilganipineni.scheduler.examples.ExampleUtils;
 import com.github.anilganipineni.scheduler.examples.StopSchedulerExtension;
 import com.github.anilganipineni.scheduler.examples.TestTasks;
 import com.github.anilganipineni.scheduler.examples.TestTasks.DoNothingHandler;
@@ -77,7 +77,7 @@ public abstract class CompatibilityTest {
     @AfterEach
     public void clearTables() {
         assertTimeout(Duration.ofSeconds(20), () ->
-            DbUtils.clearTables(getDataSource().rdbmsDataSource())
+            ExampleUtils.clearTables(getDataSource().rdbmsDataSource())
         );
     }
 
@@ -120,7 +120,7 @@ public abstract class CompatibilityTest {
         TaskResolver taskResolver = new TaskResolver(StatsRegistry.NOOP, new ArrayList<>());
         taskResolver.addTask(oneTime);
 
-        final JdbcTaskRepository jdbcTaskRepository = (JdbcTaskRepository) DbUtils.getRepository(getDataSource(), TABLE_NAME, taskResolver, new SchedulerName.Fixed("scheduler1"));
+        final JdbcTaskRepository jdbcTaskRepository = (JdbcTaskRepository) DbUtils.getRepository(getDataSource(), taskResolver, new SchedulerName.Fixed("scheduler1"));
 
         final Instant now = Instant.now();
 
@@ -157,7 +157,7 @@ public abstract class CompatibilityTest {
         TaskResolver taskResolver = new TaskResolver(StatsRegistry.NOOP, new ArrayList<>());
         taskResolver.addTask(recurringWithData);
 
-        final JdbcTaskRepository jdbcTaskRepository = (JdbcTaskRepository) DbUtils.getRepository(getDataSource(), TABLE_NAME, taskResolver, new SchedulerName.Fixed("scheduler1"));
+        final JdbcTaskRepository jdbcTaskRepository = (JdbcTaskRepository) DbUtils.getRepository(getDataSource(), taskResolver, new SchedulerName.Fixed("scheduler1"));
 
         final Instant now = Instant.now();
 
