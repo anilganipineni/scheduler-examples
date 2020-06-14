@@ -1,0 +1,8 @@
+/com/
+/hsql_tables.sql
+/log4j2.xml
+/mssql_tables.sql
+/mysql_tables.sql
+/oracle_tables.sql
+/postgresql_tables.sql
+/simplelogger.properties

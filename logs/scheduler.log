@@ -1,0 +1,3 @@
+[INFO ] [14-Jun-2020 20:53:06.923] [           main Thread]-[.jdbc.datasource.DriverManagerDataSource.setDriverClassName       (){133}]- Loaded JDBC driver: com.mysql.jdbc.Driver
+[INFO ] [14-Jun-2020 20:53:06.933] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){187}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [14-Jun-2020 20:53:06.941] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){ 97}]- Starting scheduler.
