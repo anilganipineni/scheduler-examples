@@ -63,7 +63,7 @@ public class TestHelper {
 
         public ManualScheduler build() {
             final TaskResolver taskResolver = new TaskResolver(statsRegistry, clock, knownTasks);
-            final JdbcTaskRepository taskRepository = new JdbcTaskRepository(dataSource.rdbmsDataSource(), taskResolver, schedulerName, serializer);
+            final JdbcTaskRepository taskRepository = new JdbcTaskRepository(dataSource.rdbmsDataSource(), taskResolver, schedulerName);
 
             return new ManualScheduler(clock, taskRepository, taskResolver, executorThreads, new DirectExecutorService(), schedulerName, waiter, heartbeatInterval, enableImmediateExecution, statsRegistry, pollingLimit, deleteUnresolvedAfter, startTasks);
         }

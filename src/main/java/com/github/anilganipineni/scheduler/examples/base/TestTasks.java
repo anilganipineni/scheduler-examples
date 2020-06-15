@@ -1,6 +1,7 @@
 package com.github.anilganipineni.scheduler.examples.base;
 
 import java.time.Duration;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -60,7 +61,7 @@ public class TestTasks {
         };
     }
 
-    public static  RecurringTask recurringWithData(String name, Object initialData, FixedDelay schedule, VoidExecutionHandler handler) {
+    public static  RecurringTask recurringWithData(String name, Map<String, Object> initialData, FixedDelay schedule, VoidExecutionHandler handler) {
         return new RecurringTask(name, schedule, initialData) {
             /**
 			 * @see com.github.anilganipineni.scheduler.task.RecurringTask#executeActual(com.github.anilganipineni.scheduler.dao.ScheduledTasks,

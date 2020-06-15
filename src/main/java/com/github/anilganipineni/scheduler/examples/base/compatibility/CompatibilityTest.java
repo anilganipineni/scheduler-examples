@@ -12,7 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertTimeout;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
@@ -63,7 +65,9 @@ public abstract class CompatibilityTest {
 
         oneTime = TestTasks.oneTimeWithType("oneTime", delayingHandlerOneTime);
         recurring = TestTasks.recurring("recurring", FixedDelay.of(Duration.ofMillis(10)), delayingHandlerRecurring);
-        recurringWithData = TestTasks.recurringWithData("recurringWithData", 0, FixedDelay.of(Duration.ofMillis(10)), new DoNothingHandler());
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("0", 0);
+        recurringWithData = TestTasks.recurringWithData("recurringWithData", map, FixedDelay.of(Duration.ofMillis(10)), new DoNothingHandler());
 
         statsRegistry = new TestTasks.SimpleStatsRegistry();
         scheduler = Scheduler.create(getDataSource(), Lists.newArrayList(oneTime, recurring))
@@ -145,9 +149,9 @@ public abstract class CompatibilityTest {
 
         final Optional<ScheduledTasks> rescheduled = jdbcTaskRepository.getExecution(taskInstance);
         assertThat(rescheduled.isPresent(), is(true));
-        assertThat(rescheduled.get().lastHeartbeat, nullValue());
+        assertThat(rescheduled.get().getLastHeartbeat(), nullValue());
         assertThat(rescheduled.get().isPicked(), is(false));
-        assertThat(rescheduled.get().pickedBy, nullValue());
+        assertThat(rescheduled.get().getPickedBy(), nullValue());
         assertThat(rescheduled.get().getTaskData(), is(data));
         jdbcTaskRepository.remove(rescheduled.get());
     }
@@ -161,7 +165,7 @@ public abstract class CompatibilityTest {
 
         final Instant now = Instant.now();
 
-        final ScheduledTasks taskInstance = recurringWithData.instance("id1", 1);
+        final ScheduledTasks taskInstance = recurringWithData.instance("id1", "1");
         final ScheduledTasks newExecution = new ScheduledTasks(now, "id1", "1");
 
         jdbcTaskRepository.createIfNotExists(newExecution);

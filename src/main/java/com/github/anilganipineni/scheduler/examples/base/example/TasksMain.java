@@ -1,7 +1,8 @@
 package com.github.anilganipineni.scheduler.examples.base.example;
 
-import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +50,7 @@ public class TasksMain {
 
         OneTimeTask myAdhocTask = TaskFactory.oneTime("my-typed-adhoc-task")
                 .execute((inst, ctx) -> {
-                    System.out.println("Executed! Custom data, Id: " + inst.getId());
+                    System.out.println("Executed! Custom data, Id: " + inst.getTaskId());
                 });
 
         final Scheduler scheduler = Scheduler
@@ -58,19 +59,10 @@ public class TasksMain {
                 .build();
 
         scheduler.start();
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("id", Long.parseLong("1001"));
 
         // Schedule the task for execution a certain time in the future and optionally provide custom data for the execution
-        scheduler.schedule(myAdhocTask.instance("1045", new MyTaskData(1001L)), Instant.now().plusSeconds(5));
-    }
-    /**
-     * @author akganipineni
-     */
-    @SuppressWarnings("serial")
-	public static class MyTaskData implements Serializable {
-        public final long id;
-
-        public MyTaskData(long id) {
-            this.id = id;
-        }
+        scheduler.schedule(myAdhocTask.instance("1045", data), Instant.now().plusSeconds(5));
     }
 }

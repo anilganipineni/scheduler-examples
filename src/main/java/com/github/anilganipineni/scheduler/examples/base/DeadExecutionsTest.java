@@ -97,8 +97,8 @@ public class DeadExecutionsTest {
 
         final Optional<ScheduledTasks> rescheduled = jdbcTaskRepository.getExecution(taskInstance);
         assertTrue(rescheduled.isPresent());
-        assertThat(rescheduled.get().picked, is(false));
-        assertThat(rescheduled.get().pickedBy, nullValue());
+        assertThat(rescheduled.get().isPicked(), is(false));
+        assertThat(rescheduled.get().getPickedBy(), nullValue());
 
         assertThat(jdbcTaskRepository.getDue(Instant.now(), POLLING_LIMIT), hasSize(1));
     }

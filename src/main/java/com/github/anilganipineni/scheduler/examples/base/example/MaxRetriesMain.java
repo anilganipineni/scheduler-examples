@@ -19,12 +19,12 @@ public class MaxRetriesMain {
 
         OneTimeTask failingTask = TaskFactory.oneTime("max_retries_task").onFailure((executionComplete, executionOperations) -> {
 
-                    if (executionComplete.getExecution().consecutiveFailures > 3) {
-                        System.out.println("Execution has failed " + executionComplete.getExecution().consecutiveFailures + " times. Cancelling execution.");
+                    if (executionComplete.getExecution().getConsecutiveFailures() > 3) {
+                        System.out.println("Execution has failed " + executionComplete.getExecution().getConsecutiveFailures() + " times. Cancelling execution.");
                         executionOperations.stop();
                     } else {
                         // try again in 1 second
-                        System.out.println("Execution has failed " + executionComplete.getExecution().consecutiveFailures + " times. Trying again in a bit...");
+                        System.out.println("Execution has failed " + executionComplete.getExecution().getConsecutiveFailures() + " times. Trying again in a bit...");
                         executionOperations.reschedule(executionComplete, Instant.now().plusSeconds(1));
                     }
                 })

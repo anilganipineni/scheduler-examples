@@ -161,9 +161,9 @@ public class JdbcTaskRepositoryTest {
 
         final Optional<ScheduledTasks> pickedExecution = taskRepository.getExecution(instance);
         assertThat(pickedExecution.isPresent(), is(true));
-        assertThat(pickedExecution.get().picked, is(true));
-        assertThat(pickedExecution.get().pickedBy, is(SCHEDULER_NAME));
-        assertThat(pickedExecution.get().lastHeartbeat, notNullValue());
+        assertThat(pickedExecution.get().isPicked(), is(true));
+        assertThat(pickedExecution.get().getPickedBy(), is(SCHEDULER_NAME));
+        assertThat(pickedExecution.get().getLastHeartbeat(), notNullValue());
         assertThat(taskRepository.getDue(now, POLLING_LIMIT), hasSize(0));
     }
 
@@ -200,9 +200,9 @@ public class JdbcTaskRepositoryTest {
 
         final Optional<ScheduledTasks> nextExecution = taskRepository.getExecution(instance);
         assertTrue(nextExecution.isPresent());
-        assertThat(nextExecution.get().picked, is(false));
-        assertThat(nextExecution.get().pickedBy, nullValue());
-        assertThat(nextExecution.get().executionTime, is(nextExecutionTime));
+        assertThat(nextExecution.get().isPicked(), is(false));
+        assertThat(nextExecution.get().getPickedBy(), nullValue());
+        assertThat(nextExecution.get().getExecutionTime(), is(nextExecutionTime));
     }
 
     @Test
@@ -220,14 +220,14 @@ public class JdbcTaskRepositoryTest {
 
         final Optional<ScheduledTasks> nextExecution = taskRepository.getExecution(instance);
         assertTrue(nextExecution.isPresent());
-        assertThat(nextExecution.get().consecutiveFailures, is(1));
+        assertThat(nextExecution.get().getConsecutiveFailures(), is(1));
     }
 
     @Test
     public void reschedule_should_update_data_if_specified() {
         Instant now = Instant.now();
-        final ScheduledTasks instance = oneTimeTaskWithData.instance("id1", 1);
-        taskRepository.createIfNotExists(new ScheduledTasks(now, oneTimeTaskWithData.getName(), "id1", 1));
+        final ScheduledTasks instance = oneTimeTaskWithData.instance("id1", "1");
+        taskRepository.createIfNotExists(new ScheduledTasks(now, oneTimeTaskWithData.getName(), "id1", "1"));
 
         ScheduledTasks created = taskRepository.getExecution(instance).get();
         assertEquals(created.getTaskData(), 1);
@@ -324,8 +324,8 @@ public class JdbcTaskRepositoryTest {
         assertEquals(1, testableRegistry.getCount(SchedulerStatsEvent.UNRESOLVED_TASK));
     }
 
-    private void createDeadExecution(ScheduledTasks taskInstance, Instant timeDied) {
-        taskRepository.createIfNotExists(new ScheduledTasks(timeDied, taskInstance.getTaskName(), taskInstance.getId()));
+    private void createDeadExecution(ScheduledTasks taskId, Instant timeDied) {
+        taskRepository.createIfNotExists(new ScheduledTasks(timeDied, taskId.getTaskName(), taskId.getTaskId()));
         final ScheduledTasks due = getSingleExecution();
 
         final Optional<ScheduledTasks> picked = taskRepository.pick(due, timeDied);

@@ -80,7 +80,7 @@ public class ClusterTest {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(10), () -> {
 
             final RecurringTask task1 = TaskFactory.recurring("task1", ScheduleFactory.fixedDelay(Duration.ofMillis(0)))
-                .execute((taskInstance, executionContext) -> {
+                .execute((taskId, executionContext) -> {
                     // do nothing
                     // System.out.println(counter.incrementAndGet() + " " + Thread.currentThread().getName());
                 });
@@ -129,7 +129,7 @@ public class ClusterTest {
 
         @Override
         public void complete(ExecutionComplete executionComplete, ExecutionOperations executionOperations) {
-            final String instanceId = executionComplete.getExecution().getId();
+            final String instanceId = executionComplete.getExecution().getTaskId();
             if (executionComplete.getResult() == ExecutionComplete.Result.OK) {
                 ok.add(instanceId);
             } else {
