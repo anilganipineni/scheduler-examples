@@ -1,14 +1,323 @@
-[INFO ] [15-Jun-2020 18:28:29.807] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){179}]- **************creating session******************
-[INFO ] [15-Jun-2020 18:28:29.808] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){142}]- Creating Cassandra session. Server : 127.0.0.1, port : 9042, KeySpace : gsp
-[INFO ] [15-Jun-2020 18:28:29.815] [           main Thread]-[.datastax.driver.core.GuavaCompatibility.selectImplementation     (){132}]- Detected Guava >= 19 in the classpath, using modern compatibility layer
-[INFO ] [15-Jun-2020 18:28:30.034] [           main Thread]-[         com.datastax.driver.core.Native.<clinit>                 (){115}]- Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
-[INFO ] [15-Jun-2020 18:28:30.035] [           main Thread]-[   com.datastax.driver.core.ClockFactory.newInstance              (){ 55}]- Using java.lang.System clock to generate timestamps.
-[INFO ] [15-Jun-2020 18:28:30.146] [           main Thread]-[      com.datastax.driver.core.NettyUtil.<clinit>                 (){ 83}]- Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
-[INFO ] [15-Jun-2020 18:28:30.452] [           main Thread]-[er.core.policies.DCAwareRoundRobinPolicy.init                     (){ 95}]- Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-[INFO ] [15-Jun-2020 18:28:30.453] [           main Thread]-[        com.datastax.driver.core.Cluster.init                     (){1568}]- New Cassandra host /127.0.0.1:9042 added
-[INFO ] [15-Jun-2020 18:28:30.504] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){164}]- Created Cassandra session successfully.........................
-[INFO ] [15-Jun-2020 18:28:30.504] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){181}]- **************Session is created successfully, Session objectcom.datastax.driver.core.SessionManager@7674b62c
-[INFO ] [15-Jun-2020 18:28:30.510] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.<init>                   (){ 84}]- Created Cassandra Mapping Manager successfully.........................
-[INFO ] [15-Jun-2020 18:28:30.511] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
-[INFO ] [15-Jun-2020 18:28:30.514] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){ 97}]- Starting scheduler.
-[WARN ] [15-Jun-2020 18:28:30.567] [uster1-worker-3 Thread]-[        com.datastax.driver.core.Cluster.addPrepared              (){2223}]- Re-preparing already prepared query is generally an anti-pattern and will likely affect performance. Consider preparing the statement only once. Query=' select * from scheduled_tasks LIMIT 2000 '
+[INFO ] [16-Jun-2020 10:11:24.025] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.datasource               (){118}]- Tue Jun 16 10:11:24 IST 2020 - Creating the Data Source for db type : RDBMS
+[INFO ] [16-Jun-2020 10:11:24.066] [           main Thread]-[.jdbc.datasource.DriverManagerDataSource.setDriverClassName       (){133}]- Loaded JDBC driver: com.mysql.jdbc.Driver
+[INFO ] [16-Jun-2020 10:11:24.066] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.datasource               (){124}]- Tue Jun 16 10:11:24 IST 2020 - DataSource created for jdbc:mysql://localhost:3306/gstwrapper?useSSL=false
+[INFO ] [16-Jun-2020 10:11:24.071] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 10:11:28.431] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[INFO ] [16-Jun-2020 10:21:56.554] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){179}]- **************creating session******************
+[INFO ] [16-Jun-2020 10:21:56.557] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){142}]- Creating Cassandra session. Server : 127.0.0.1, port : 9042, KeySpace : gsp
+[INFO ] [16-Jun-2020 10:21:56.570] [           main Thread]-[.datastax.driver.core.GuavaCompatibility.selectImplementation     (){132}]- Detected Guava >= 19 in the classpath, using modern compatibility layer
+[INFO ] [16-Jun-2020 10:21:57.008] [           main Thread]-[         com.datastax.driver.core.Native.<clinit>                 (){115}]- Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+[INFO ] [16-Jun-2020 10:21:57.009] [           main Thread]-[   com.datastax.driver.core.ClockFactory.newInstance              (){ 55}]- Using java.lang.System clock to generate timestamps.
+[INFO ] [16-Jun-2020 10:21:57.184] [           main Thread]-[      com.datastax.driver.core.NettyUtil.<clinit>                 (){ 83}]- Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[INFO ] [16-Jun-2020 10:21:57.724] [           main Thread]-[er.core.policies.DCAwareRoundRobinPolicy.init                     (){ 95}]- Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[INFO ] [16-Jun-2020 10:21:57.726] [           main Thread]-[        com.datastax.driver.core.Cluster.init                     (){1568}]- New Cassandra host /127.0.0.1:9042 added
+[INFO ] [16-Jun-2020 10:21:57.799] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){164}]- Created Cassandra session successfully.........................
+[INFO ] [16-Jun-2020 10:21:57.799] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){181}]- **************Session is created successfully, Session objectcom.datastax.driver.core.SessionManager@69e308c6
+[INFO ] [16-Jun-2020 10:21:57.810] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.<init>                   (){ 84}]- Created Cassandra Mapping Manager successfully.........................
+[INFO ] [16-Jun-2020 10:21:57.812] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 10:22:01.202] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[WARN ] [16-Jun-2020 10:22:01.342] [uster1-worker-3 Thread]-[        com.datastax.driver.core.Cluster.addPrepared              (){2223}]- Re-preparing already prepared query is generally an anti-pattern and will likely affect performance. Consider preparing the statement only once. Query=' select * from scheduled_tasks LIMIT 2000 '
+[INFO ] [16-Jun-2020 10:22:01.348] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){270}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 10:47:44.430] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){179}]- **************creating session******************
+[INFO ] [16-Jun-2020 10:47:44.433] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){142}]- Creating Cassandra session. Server : 127.0.0.1, port : 9042, KeySpace : gsp
+[INFO ] [16-Jun-2020 10:47:44.453] [           main Thread]-[.datastax.driver.core.GuavaCompatibility.selectImplementation     (){132}]- Detected Guava >= 19 in the classpath, using modern compatibility layer
+[INFO ] [16-Jun-2020 10:47:44.924] [           main Thread]-[         com.datastax.driver.core.Native.<clinit>                 (){115}]- Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+[INFO ] [16-Jun-2020 10:47:44.925] [           main Thread]-[   com.datastax.driver.core.ClockFactory.newInstance              (){ 55}]- Using java.lang.System clock to generate timestamps.
+[INFO ] [16-Jun-2020 10:47:45.102] [           main Thread]-[      com.datastax.driver.core.NettyUtil.<clinit>                 (){ 83}]- Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[INFO ] [16-Jun-2020 10:47:45.635] [           main Thread]-[er.core.policies.DCAwareRoundRobinPolicy.init                     (){ 95}]- Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[INFO ] [16-Jun-2020 10:47:45.637] [           main Thread]-[        com.datastax.driver.core.Cluster.init                     (){1568}]- New Cassandra host /127.0.0.1:9042 added
+[INFO ] [16-Jun-2020 10:47:45.719] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){164}]- Created Cassandra session successfully.........................
+[INFO ] [16-Jun-2020 10:47:45.719] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){181}]- **************Session is created successfully, Session objectcom.datastax.driver.core.SessionManager@27abb83e
+[INFO ] [16-Jun-2020 10:47:45.732] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.<init>                   (){ 84}]- Created Cassandra Mapping Manager successfully.........................
+[INFO ] [16-Jun-2020 10:47:45.734] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 10:47:45.741] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[WARN ] [16-Jun-2020 10:47:45.833] [uster1-worker-3 Thread]-[        com.datastax.driver.core.Cluster.addPrepared              (){2223}]- Re-preparing already prepared query is generally an anti-pattern and will likely affect performance. Consider preparing the statement only once. Query=' select * from scheduled_tasks LIMIT 2000 '
+[INFO ] [16-Jun-2020 10:47:45.836] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 10:47:55.844] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:09:47.628] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){179}]- **************creating session******************
+[INFO ] [16-Jun-2020 11:09:47.631] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){142}]- Creating Cassandra session. Server : 127.0.0.1, port : 9042, KeySpace : gsp
+[INFO ] [16-Jun-2020 11:09:47.649] [           main Thread]-[.datastax.driver.core.GuavaCompatibility.selectImplementation     (){132}]- Detected Guava >= 19 in the classpath, using modern compatibility layer
+[INFO ] [16-Jun-2020 11:09:48.144] [           main Thread]-[         com.datastax.driver.core.Native.<clinit>                 (){115}]- Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+[INFO ] [16-Jun-2020 11:09:48.145] [           main Thread]-[   com.datastax.driver.core.ClockFactory.newInstance              (){ 55}]- Using java.lang.System clock to generate timestamps.
+[INFO ] [16-Jun-2020 11:09:48.338] [           main Thread]-[      com.datastax.driver.core.NettyUtil.<clinit>                 (){ 83}]- Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[INFO ] [16-Jun-2020 11:09:48.950] [           main Thread]-[er.core.policies.DCAwareRoundRobinPolicy.init                     (){ 95}]- Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[INFO ] [16-Jun-2020 11:09:48.952] [           main Thread]-[        com.datastax.driver.core.Cluster.init                     (){1568}]- New Cassandra host /127.0.0.1:9042 added
+[INFO ] [16-Jun-2020 11:09:49.022] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){164}]- Created Cassandra session successfully.........................
+[INFO ] [16-Jun-2020 11:09:49.022] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){181}]- **************Session is created successfully, Session objectcom.datastax.driver.core.SessionManager@27abb83e
+[INFO ] [16-Jun-2020 11:09:49.035] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.<init>                   (){ 84}]- Created Cassandra Mapping Manager successfully.........................
+[INFO ] [16-Jun-2020 11:09:49.036] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 11:09:49.043] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[WARN ] [16-Jun-2020 11:09:49.131] [uster1-worker-3 Thread]-[        com.datastax.driver.core.Cluster.addPrepared              (){2223}]- Re-preparing already prepared query is generally an anti-pattern and will likely affect performance. Consider preparing the statement only once. Query=' select * from scheduled_tasks LIMIT 2000 '
+[INFO ] [16-Jun-2020 11:09:49.137] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:09:59.145] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:10:09.149] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[ERROR] [16-Jun-2020 11:10:27.441] [pool-2-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-minutes-task, taskId=recurring, executionTime=2020-06-16T05:39:49.045Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T05:39:49.141Z, version=1. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+java.lang.RuntimeException: Expected one execution to be updated, but updated 0. Indicates a bug.
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.rescheduleInternal(CassandraTaskRepository.java:518) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:252) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:243) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.reschedule(ExecutionOperations.java:40) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteReschedule.complete(OnCompleteReschedule.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[ERROR] [16-Jun-2020 11:10:37.485] [pool-2-thread-2 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-minutes-task, taskId=recurring, executionTime=2020-06-16T05:41:27.416Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T05:39:59.146Z, version=1. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+java.lang.RuntimeException: Expected one execution to be updated, but updated 0. Indicates a bug.
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.rescheduleInternal(CassandraTaskRepository.java:518) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:252) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:243) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.reschedule(ExecutionOperations.java:40) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteReschedule.complete(OnCompleteReschedule.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[ERROR] [16-Jun-2020 11:10:38.862] [pool-2-thread-3 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-minutes-task, taskId=recurring, executionTime=2020-06-16T05:41:37.479Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T05:40:09.149Z, version=1. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+java.lang.RuntimeException: Expected one execution to be updated, but updated 0. Indicates a bug.
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.rescheduleInternal(CassandraTaskRepository.java:518) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:252) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:243) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.reschedule(ExecutionOperations.java:40) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteReschedule.complete(OnCompleteReschedule.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[INFO ] [16-Jun-2020 11:11:39.196] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[ERROR] [16-Jun-2020 11:11:39.217] [pool-2-thread-4 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-minutes-task, taskId=recurring, executionTime=2020-06-16T05:41:38.857Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T05:41:39.197Z, version=3. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+java.lang.RuntimeException: Expected one execution to be updated, but updated 0. Indicates a bug.
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.rescheduleInternal(CassandraTaskRepository.java:518) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:252) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:243) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.reschedule(ExecutionOperations.java:40) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteReschedule.complete(OnCompleteReschedule.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[INFO ] [16-Jun-2020 11:12:39.223] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[ERROR] [16-Jun-2020 11:12:39.244] [pool-2-thread-5 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-minutes-task, taskId=recurring, executionTime=2020-06-16T05:42:39.212Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T05:42:39.224Z, version=5. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+java.lang.RuntimeException: Expected one execution to be updated, but updated 0. Indicates a bug.
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.rescheduleInternal(CassandraTaskRepository.java:518) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:252) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:243) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.reschedule(ExecutionOperations.java:40) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteReschedule.complete(OnCompleteReschedule.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[INFO ] [16-Jun-2020 11:13:39.257] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){269}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[ERROR] [16-Jun-2020 11:13:39.281] [pool-2-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-minutes-task, taskId=recurring, executionTime=2020-06-16T05:43:39.238Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T05:43:39.258Z, version=7. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+java.lang.RuntimeException: Expected one execution to be updated, but updated 0. Indicates a bug.
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.rescheduleInternal(CassandraTaskRepository.java:518) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:252) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:243) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.reschedule(CassandraTaskRepository.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.reschedule(ExecutionOperations.java:40) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteReschedule.complete(OnCompleteReschedule.java:50) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[INFO ] [16-Jun-2020 11:40:13.421] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){179}]- **************creating session******************
+[INFO ] [16-Jun-2020 11:40:13.424] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){142}]- Creating Cassandra session. Server : 127.0.0.1, port : 9042, KeySpace : gsp
+[INFO ] [16-Jun-2020 11:40:13.437] [           main Thread]-[.datastax.driver.core.GuavaCompatibility.selectImplementation     (){132}]- Detected Guava >= 19 in the classpath, using modern compatibility layer
+[INFO ] [16-Jun-2020 11:40:13.845] [           main Thread]-[         com.datastax.driver.core.Native.<clinit>                 (){115}]- Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+[INFO ] [16-Jun-2020 11:40:13.845] [           main Thread]-[   com.datastax.driver.core.ClockFactory.newInstance              (){ 55}]- Using java.lang.System clock to generate timestamps.
+[INFO ] [16-Jun-2020 11:40:13.987] [           main Thread]-[      com.datastax.driver.core.NettyUtil.<clinit>                 (){ 83}]- Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[INFO ] [16-Jun-2020 11:40:14.423] [           main Thread]-[er.core.policies.DCAwareRoundRobinPolicy.init                     (){ 95}]- Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[INFO ] [16-Jun-2020 11:40:14.425] [           main Thread]-[        com.datastax.driver.core.Cluster.init                     (){1568}]- New Cassandra host /127.0.0.1:9042 added
+[INFO ] [16-Jun-2020 11:40:14.457] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){164}]- Created Cassandra session successfully.........................
+[INFO ] [16-Jun-2020 11:40:14.457] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){181}]- **************Session is created successfully, Session objectcom.datastax.driver.core.SessionManager@7674b62c
+[INFO ] [16-Jun-2020 11:40:14.507] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.<init>                   (){ 82}]- Created Cassandra Mapping Manager successfully.........................
+[INFO ] [16-Jun-2020 11:40:14.508] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 11:40:14.513] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[WARN ] [16-Jun-2020 11:40:14.586] [uster1-worker-3 Thread]-[        com.datastax.driver.core.Cluster.addPrepared              (){2223}]- Re-preparing already prepared query is generally an anti-pattern and will likely affect performance. Consider preparing the statement only once. Query=' select * from scheduled_tasks LIMIT 2000 '
+[INFO ] [16-Jun-2020 11:40:14.592] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-hourly-task and ID : recurring
+[INFO ] [16-Jun-2020 11:40:14.592] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:41:14.629] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:42:04.658] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-onetime-task and ID : 1045
+[ERROR] [16-Jun-2020 11:42:04.697] [uster1-worker-4 Thread]-[      com.datastax.driver.mapping.Mapper.onFailure                (){134}]- Query preparation failed: DELETE FROM gsp.scheduled_tasks;
+com.datastax.driver.core.exceptions.SyntaxError: line 1:31 mismatched input ';' expecting K_WHERE (DELETE FROM gsp.scheduled_tasks[;])
+	at com.datastax.driver.core.Responses$Error.asException(Responses.java:144) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.datastax.driver.core.SessionManager$4.apply(SessionManager.java:220) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.datastax.driver.core.SessionManager$4.apply(SessionManager.java:196) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.google.common.util.concurrent.Futures$AsyncChainingFuture.doTransform(Futures.java:1442) [guava-19.0.jar:?]
+	at com.google.common.util.concurrent.Futures$AsyncChainingFuture.doTransform(Futures.java:1433) [guava-19.0.jar:?]
+	at com.google.common.util.concurrent.Futures$AbstractChainingFuture.run(Futures.java:1408) [guava-19.0.jar:?]
+	at com.google.common.util.concurrent.Futures$2$1.run(Futures.java:1177) [guava-19.0.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [netty-common-4.0.47.Final.jar:4.0.47.Final]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+[ERROR] [16-Jun-2020 11:42:04.697] [pool-2-thread-4 Thread]-[ithub.anilganipineni.scheduler.Scheduler.complete                 (){391}]- Failed while completing execution ScheduledTasks: task=my-onetime-task, taskId=1045, executionTime=2020-06-16T06:11:59.602Z, picked=true, pickedBy=AIPLLTH226, lastHeartbeat=2020-06-16T06:12:04.659Z, version=1. ScheduledTasks will likely remain scheduled and locked/picked. The execution should be detected as dead in PT20M, and handled according to the tasks DeadExecutionHandler.
+com.datastax.driver.core.exceptions.SyntaxError: line 1:31 mismatched input ';' expecting K_WHERE (DELETE FROM gsp.scheduled_tasks[;])
+	at com.datastax.driver.core.exceptions.SyntaxError.copy(SyntaxError.java:58) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.datastax.driver.core.exceptions.SyntaxError.copy(SyntaxError.java:24) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.datastax.driver.mapping.DriverThrowables.propagateCause(DriverThrowables.java:41) ~[cassandra-driver-mapping-3.3.0.jar:?]
+	at com.datastax.driver.mapping.Mapper.delete(Mapper.java:657) ~[cassandra-driver-mapping-3.3.0.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.delete(CassandraTaskRepository.java:169) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.remove(CassandraTaskRepository.java:337) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.dao.CassandraTaskRepository.remove(CassandraTaskRepository.java:49) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.ExecutionOperations.stop(ExecutionOperations.java:35) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.task.handler.OnCompleteRemove.complete(OnCompleteRemove.java:16) ~[scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.complete(Scheduler.java:386) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.executePickedExecution(Scheduler.java:368) [scheduler-0.3.jar:?]
+	at com.github.anilganipineni.scheduler.Scheduler$PickAndExecute.run(Scheduler.java:344) [scheduler-0.3.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_144]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_144]
+Caused by: com.datastax.driver.core.exceptions.SyntaxError: line 1:31 mismatched input ';' expecting K_WHERE (DELETE FROM gsp.scheduled_tasks[;])
+	at com.datastax.driver.core.Responses$Error.asException(Responses.java:144) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.datastax.driver.core.SessionManager$4.apply(SessionManager.java:220) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.datastax.driver.core.SessionManager$4.apply(SessionManager.java:196) ~[cassandra-driver-core-3.3.0.jar:?]
+	at com.google.common.util.concurrent.Futures$AsyncChainingFuture.doTransform(Futures.java:1442) ~[guava-19.0.jar:?]
+	at com.google.common.util.concurrent.Futures$AsyncChainingFuture.doTransform(Futures.java:1433) ~[guava-19.0.jar:?]
+	at com.google.common.util.concurrent.Futures$AbstractChainingFuture.run(Futures.java:1408) ~[guava-19.0.jar:?]
+	at com.google.common.util.concurrent.Futures$2$1.run(Futures.java:1177) ~[guava-19.0.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_144]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) ~[netty-common-4.0.47.Final.jar:4.0.47.Final]
+	... 1 more
+[INFO ] [16-Jun-2020 11:42:14.664] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:43:14.688] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:44:14.718] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:45:14.754] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:46:14.777] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:47:14.802] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:48:14.837] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:49:14.861] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:50:14.884] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:51:14.915] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:52:14.940] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:53:14.964] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:54:14.999] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:55:15.025] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:56:15.047] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:57:15.080] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:58:15.105] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 11:59:15.127] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:00:15.173] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:01:15.226] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:02:15.249] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:03:15.277] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:04:15.308] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){265}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:31:12.142] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){179}]- **************creating session******************
+[INFO ] [16-Jun-2020 12:31:12.144] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){142}]- Creating Cassandra session. Server : 127.0.0.1, port : 9042, KeySpace : gsp
+[INFO ] [16-Jun-2020 12:31:12.153] [           main Thread]-[.datastax.driver.core.GuavaCompatibility.selectImplementation     (){132}]- Detected Guava >= 19 in the classpath, using modern compatibility layer
+[INFO ] [16-Jun-2020 12:31:12.498] [           main Thread]-[         com.datastax.driver.core.Native.<clinit>                 (){115}]- Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+[INFO ] [16-Jun-2020 12:31:12.499] [           main Thread]-[   com.datastax.driver.core.ClockFactory.newInstance              (){ 55}]- Using java.lang.System clock to generate timestamps.
+[INFO ] [16-Jun-2020 12:31:12.632] [           main Thread]-[      com.datastax.driver.core.NettyUtil.<clinit>                 (){ 83}]- Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[INFO ] [16-Jun-2020 12:31:13.059] [           main Thread]-[er.core.policies.DCAwareRoundRobinPolicy.init                     (){ 95}]- Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[INFO ] [16-Jun-2020 12:31:13.061] [           main Thread]-[        com.datastax.driver.core.Cluster.init                     (){1568}]- New Cassandra host /127.0.0.1:9042 added
+[INFO ] [16-Jun-2020 12:31:13.127] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.createSession            (){164}]- Created Cassandra session successfully.........................
+[INFO ] [16-Jun-2020 12:31:13.128] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.getSession               (){181}]- **************Session is created successfully, Session objectcom.datastax.driver.core.SessionManager@7674b62c
+[INFO ] [16-Jun-2020 12:31:13.137] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.<init>                   (){ 83}]- Created Cassandra Mapping Manager successfully.........................
+[INFO ] [16-Jun-2020 12:31:13.139] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 12:31:13.144] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[WARN ] [16-Jun-2020 12:31:13.216] [uster1-worker-3 Thread]-[        com.datastax.driver.core.Cluster.addPrepared              (){2223}]- Re-preparing already prepared query is generally an anti-pattern and will likely affect performance. Consider preparing the statement only once. Query=' select * from scheduled_tasks LIMIT 2000 '
+[INFO ] [16-Jun-2020 12:31:13.222] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-hourly-task and ID : recurring
+[INFO ] [16-Jun-2020 12:31:13.222] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:32:13.252] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:33:03.274] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-onetime-task and ID : 1045
+[INFO ] [16-Jun-2020 12:33:13.278] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:34:13.310] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:35:13.339] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:36:13.356] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:37:13.378] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:38:23.398] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:39:23.418] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:40:23.449] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:41:33.472] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:42:33.505] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:43:33.537] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:44:33.556] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:45:33.578] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:46:33.616] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:47:43.638] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:48:43.662] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:49:43.690] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:50:43.710] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:51:43.740] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:52:43.765] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:53:43.783] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:54:43.814] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:55:43.847] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:56:43.865] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:57:43.894] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:58:43.924] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 12:59:43.952] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:00:43.967] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:01:43.984] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:02:44.003] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:03:44.021] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:04:54.044] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:05:54.062] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:06:54.084] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:07:54.103] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:09:04.123] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:10:04.137] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:11:14.154] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:12:14.174] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:13:14.196] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:14:14.217] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:15:24.233] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:16:24.256] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:17:34.278] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:18:34.293] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:19:34.310] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:20:34.332] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:21:44.350] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:22:44.369] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:23:44.388] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:24:54.406] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:25:54.422] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:26:54.441] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:27:54.457] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:28:54.476] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:29:54.498] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:30:54.516] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:31:54.538] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:32:54.559] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:33:54.574] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:34:54.590] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:35:54.609] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:37:04.628] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:38:04.652] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:39:14.678] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:40:14.695] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:41:14.714] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:42:14.741] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:43:14.755] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:44:14.784] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:45:14.808] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:46:24.825] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:47:24.850] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:48:24.873] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:49:34.888] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:50:34.908] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:51:34.938] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:52:44.957] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:53:44.976] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:54:45.002] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:55:45.024] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring
+[INFO ] [16-Jun-2020 13:56:45.048] [pool-3-thread-1 Thread]-[ni.scheduler.dao.CassandraTaskRepository.getDue                   (){266}]- Selected for Due --> Name : my-minutes-task and ID : recurring

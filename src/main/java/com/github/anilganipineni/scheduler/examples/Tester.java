@@ -58,7 +58,7 @@ public class Tester {
 		        	System.out.println(new Date() + " - Anil Hourly Scheduler Executed..........");
 		        });
 		
-		Task minutesTask = TaskFactory.recurring("my-minutes-task", FixedDelay.ofMinutes(5))
+		Task minutesTask = TaskFactory.recurring("my-minutes-task", FixedDelay.ofMinutes(1))
 		        .execute((task, ctx) -> {
 		        	System.out.println(new Date() + " - Anil Minutes Scheduler Executed..........");
 		        });
@@ -100,7 +100,7 @@ public class Tester {
 					map.put("id", Long.parseLong("1001"));
 					s.addTask(oneTimeTask);
 
-						s.schedule(oneTimeTask.instance("1045", map), Instant.now().plusSeconds(600));
+						s.schedule(oneTimeTask.instance("1045", map), Instant.now().plusSeconds(45));
 					System.out.println(new Date() + " - " + Thread.currentThread().getName() + " - Thread completed and scheduleed the one time task!");
 					
 				} catch (Exception ex) {
@@ -115,13 +115,13 @@ public class Tester {
      * @return
      */
     private static DataSource datasource() {
-		System.out.println(new Date() + " - Creating the Data Source for db type : RDBMS");
+    	logger.info(new Date() + " - Creating the Data Source for db type : RDBMS");
     	DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName(RDBMS_DRIVER);
         ds.setUrl(RDBMS_URL);
         ds.setUsername(RDBMS_USER);
         ds.setPassword(RDBMS_PWD);
-        System.out.println(new Date() + " - DataSource created for " + RDBMS_URL);
+        logger.info(new Date() + " - DataSource created for " + RDBMS_URL);
         
         return ds;
     }
@@ -211,7 +211,7 @@ public class Tester {
 			 */
 			@Override
 			public DataSourceType dataSourceType() {
-				return DataSourceType.RDBMS;
+				return DataSourceType.CASSANDRA;
 			}
 			/**
 			 * @see com.github.anilganipineni.scheduler.dao.SchedulerDataSource#rdbmsDataSource()

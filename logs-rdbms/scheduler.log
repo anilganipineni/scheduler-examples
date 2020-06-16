@@ -1,0 +1,18 @@
+[INFO ] [16-Jun-2020 09:27:39.035] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.datasource               (){118}]- Tue Jun 16 09:27:39 IST 2020 - Creating the Data Source for db type : RDBMS
+[INFO ] [16-Jun-2020 09:27:39.084] [           main Thread]-[.jdbc.datasource.DriverManagerDataSource.setDriverClassName       (){133}]- Loaded JDBC driver: com.mysql.jdbc.Driver
+[INFO ] [16-Jun-2020 09:27:39.084] [           main Thread]-[.examples.Tester$CassandraDataSourceImpl.datasource               (){124}]- Tue Jun 16 09:27:39 IST 2020 - DataSource created for jdbc:mysql://localhost:3306/gstwrapper?useSSL=false
+[INFO ] [16-Jun-2020 09:27:39.090] [           main Thread]-[ni.scheduler.dao.CassandraTaskRepository.build                    (){180}]- Creating scheduler with configuration: threads=5, pollInterval=10s, heartbeat=300s enable-immediate-execution=true, name=AIPLLTH226
+[INFO ] [16-Jun-2020 09:27:39.106] [           main Thread]-[ithub.anilganipineni.scheduler.Scheduler.start                    (){101}]- Starting scheduler.
+[INFO ] [16-Jun-2020 09:27:39.532] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 1 number of tasks found due for execution and task names : my-minutes-task
+[INFO ] [16-Jun-2020 09:27:49.547] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:27:59.555] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:28:09.562] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:28:19.576] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:28:29.592] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:28:39.601] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 1 number of tasks found due for execution and task names : my-minutes-task
+[INFO ] [16-Jun-2020 09:28:49.616] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:28:59.625] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:29:09.634] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:29:19.644] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 0 number of tasks found due for execution and task names : 
+[INFO ] [16-Jun-2020 09:29:29.653] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 1 number of tasks found due for execution and task names : my-onetime-task
+[INFO ] [16-Jun-2020 09:29:39.661] [pool-3-thread-1 Thread]-[ithub.anilganipineni.scheduler.Scheduler.executeDue               (){213}]- 1 number of tasks found due for execution and task names : my-minutes-task

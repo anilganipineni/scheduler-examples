@@ -1,16 +1,20 @@
 package com.github.anilganipineni.scheduler.examples.base;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.Duration;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.anilganipineni.scheduler.SystemClock;
 import com.github.anilganipineni.scheduler.Waiter;
-
-import java.time.Duration;
-import java.util.concurrent.*;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.github.anilganipineni.scheduler.schedule.SystemClock;
 
 public class WaiterTest {
     private ExecutorService executor;

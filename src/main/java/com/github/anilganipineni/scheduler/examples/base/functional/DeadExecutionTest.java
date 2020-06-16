@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import com.github.anilganipineni.scheduler.Clock;
 import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.ExecutionContext;
 import com.github.anilganipineni.scheduler.ExecutionOperations;
@@ -19,6 +18,7 @@ import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.base.EmbeddedPostgresqlExtension;
 import com.github.anilganipineni.scheduler.examples.base.StopSchedulerExtension;
 import com.github.anilganipineni.scheduler.examples.base.helper.TestableRegistry;
+import com.github.anilganipineni.scheduler.schedule.Clock;
 import com.github.anilganipineni.scheduler.task.CustomTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
 import com.github.anilganipineni.scheduler.task.handler.CompletionHandler;

@@ -17,7 +17,7 @@ package com.github.anilganipineni.scheduler.examples.base.helper;
 
 import java.time.Instant;
 
-import com.github.anilganipineni.scheduler.Clock;
+import com.github.anilganipineni.scheduler.schedule.Clock;
 
 /**
  * @author akganipineni
