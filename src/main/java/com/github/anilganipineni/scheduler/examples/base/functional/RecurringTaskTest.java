@@ -15,13 +15,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import com.github.anilganipineni.scheduler.ScheduledExecution;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.base.EmbeddedPostgresqlExtension;
 import com.github.anilganipineni.scheduler.examples.base.TestTasks;
 import com.github.anilganipineni.scheduler.examples.base.helper.ManualScheduler;
 import com.github.anilganipineni.scheduler.examples.base.helper.SettableClock;
 import com.github.anilganipineni.scheduler.examples.base.helper.TestHelper;
+import com.github.anilganipineni.scheduler.exception.SchedulerException;
 import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
 import com.github.anilganipineni.scheduler.task.TaskFactory;
@@ -44,7 +44,7 @@ public class RecurringTaskTest {
     }
 
     @Test
-    public void should_have_starttime_according_to_schedule_by_default() {
+    public void should_have_starttime_according_to_schedule_by_default() throws SchedulerException {
 
         RecurringTask recurringTask = TaskFactory.recurring("recurring-a", ScheduleFactory.daily(LocalTime.of(23, 59))).execute(TestTasks.DO_NOTHING);
 
@@ -55,13 +55,13 @@ public class RecurringTaskTest {
 
         scheduler.start();
 
-        Optional<ScheduledExecution<Object>> firstExecution = scheduler.getScheduledExecution(new ScheduledTasks("recurring-a", RecurringTask.INSTANCE));
-        assertThat(firstExecution.map(ScheduledExecution::getExecutionTime),
+        Optional<ScheduledTasks> firstExecution = scheduler.getScheduledExecution(new ScheduledTasks("recurring-a", RecurringTask.INSTANCE));
+        assertThat(firstExecution.map(ScheduledTasks::getExecutionTime),
                 contains(ZonedDateTime.of(DATE, LocalTime.of(23, 59), ZONE).toInstant()));
     }
 
     @Test
-    public void should_have_starttime_now_if_overridden_by_schedule() {
+    public void should_have_starttime_now_if_overridden_by_schedule() throws SchedulerException {
 
         RecurringTask recurringTask = TaskFactory.recurring("recurring-a", ScheduleFactory.fixedDelay(Duration.ofHours(1)))
                 .execute(TestTasks.DO_NOTHING);
@@ -72,9 +72,9 @@ public class RecurringTaskTest {
                 .build();
         scheduler.start();
 
-        Optional<ScheduledExecution<Object>> firstExecution = scheduler.getScheduledExecution(new ScheduledTasks("recurring-a", RecurringTask.INSTANCE));
+        Optional<ScheduledTasks> firstExecution = scheduler.getScheduledExecution(new ScheduledTasks("recurring-a", RecurringTask.INSTANCE));
 
-        assertThat(firstExecution.map(ScheduledExecution::getExecutionTime),
+        assertThat(firstExecution.map(ScheduledTasks::getExecutionTime),
                 contains(ZonedDateTime.of(DATE, TIME, ZONE).toInstant()));
     }
 

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.base.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
@@ -32,8 +33,7 @@ public class MaxRetriesMain {
                     throw new RuntimeException("simulated task exception");
                 });
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource, failingTask)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource, failingTask)
                 .pollingInterval(Duration.ofSeconds(2))
                 .build();
 

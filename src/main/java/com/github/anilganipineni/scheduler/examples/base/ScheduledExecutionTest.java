@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import com.github.anilganipineni.scheduler.ScheduledExecution;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.exception.DataClassMismatchException;
-import com.github.anilganipineni.scheduler.exception.SchedulerException;
 
 public class ScheduledExecutionTest {
 
@@ -24,8 +23,8 @@ public class ScheduledExecutionTest {
         assertNotEquals(createExecution("task", "1", now), createExecution("task", "1", now.plusSeconds(1)));
     }
 
-    private ScheduledExecution<Void> createExecution(String taskname, String id, Instant executionTime) {
-        return new ScheduledExecution<Void>(Void.class, new ScheduledTasks(executionTime, taskname, id));
+    private ScheduledTasks createExecution(String taskname, String id, Instant executionTime) {
+        return new ScheduledTasks(executionTime, taskname, id);
     }
 
     @Test
@@ -33,13 +32,8 @@ public class ScheduledExecutionTest {
         Instant now = Instant.now();
         ScheduledTasks execution = new ScheduledTasks(now, "id1", "1");
 
-        ScheduledExecution<Integer> scheduledExecution = new ScheduledExecution<>(Integer.class, execution);
-        try {
-			assertEquals(new Integer(1), scheduledExecution.getData());
-		} catch (SchedulerException ex) {
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
-		}
+        ScheduledExecution scheduledExecution = new ScheduledExecution(execution);
+		assertEquals(new Integer(1), scheduledExecution.getData());
     }
 
     @Test
@@ -49,7 +43,7 @@ public class ScheduledExecutionTest {
             Instant now = Instant.now();
             ScheduledTasks execution = new ScheduledTasks(now, "id1", "1");
 
-            new ScheduledExecution<>(String.class, execution).getData(); // Instantiate with incorrect type
+            new ScheduledExecution(execution).getData(); // Instantiate with incorrect type
         });
     }
 }

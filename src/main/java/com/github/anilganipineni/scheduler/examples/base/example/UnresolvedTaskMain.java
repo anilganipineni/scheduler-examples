@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
-import com.github.anilganipineni.scheduler.SchedulerClient;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.SchedulerClientBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.base.HsqlTestDatabaseExtension;
@@ -31,12 +31,11 @@ public class UnresolvedTaskMain {
                 System.out.println("Ran");
             });
 
-        SchedulerClient client = SchedulerClientBuilder.create(dataSource).build();
+        Scheduler client = SchedulerClientBuilder.create(dataSource).build();
         client.schedule(unresolvedTask.instance(RecurringTask.INSTANCE), Instant.now());
         client.schedule(unresolvedTask2.instance(RecurringTask.INSTANCE), Instant.now().plusSeconds(10));
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource)
                 .pollingInterval(Duration.ofSeconds(1))
                 .heartbeatInterval(Duration.ofSeconds(5))
                 .deleteUnresolvedAfter(Duration.ofSeconds(20))
@@ -50,8 +49,9 @@ public class UnresolvedTaskMain {
         scheduler.start();
 
         IntStream.range(0, 5).forEach(i -> {
-            scheduler.getScheduledExecutions(e -> {});
+            
             try {
+            	scheduler.getScheduledExecutions(e -> {});
 				scheduler.getFailingExecutions(Duration.ZERO);
 			} catch (SchedulerException ex) {
 				// TODO Auto-generated catch block

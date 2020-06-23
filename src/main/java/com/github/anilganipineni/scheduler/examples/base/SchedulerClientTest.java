@@ -16,14 +16,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.ExecutionContext;
-import com.github.anilganipineni.scheduler.ScheduledExecution;
-import com.github.anilganipineni.scheduler.SchedulerClient;
+import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerClientBuilder;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.base.TestTasks.SavingHandler;
 import com.github.anilganipineni.scheduler.examples.base.helper.ManualScheduler;
 import com.github.anilganipineni.scheduler.examples.base.helper.SettableClock;
 import com.github.anilganipineni.scheduler.examples.base.helper.TestHelper;
+import com.github.anilganipineni.scheduler.exception.SchedulerException;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.handler.VoidExecutionHandler;
 
@@ -72,7 +72,7 @@ public class SchedulerClientTest {
 
     @Test
     public void client_should_be_able_to_schedule_executions() {
-        SchedulerClient client = SchedulerClientBuilder.create(DB.getSchedulerDataSource()).build();
+        Scheduler client = SchedulerClientBuilder.create(DB.getSchedulerDataSource()).build();
         client.schedule(oneTimeTaskA.instance("1"), settableClock.now());
 
         scheduler.runAnyDueExecutions();
@@ -92,8 +92,8 @@ public class SchedulerClientTest {
     }
 
     @Test
-    public void client_should_be_able_to_fetch_executions_for_task() {
-        SchedulerClient client = SchedulerClientBuilder.create(DB.getSchedulerDataSource(), oneTimeTaskA, oneTimeTaskB).build();
+    public void client_should_be_able_to_fetch_executions_for_task() throws SchedulerException {
+        Scheduler client = SchedulerClientBuilder.create(DB.getSchedulerDataSource(), oneTimeTaskA, oneTimeTaskB).build();
         client.schedule(oneTimeTaskA.instance("1"), settableClock.now());
         client.schedule(oneTimeTaskA.instance("2"), settableClock.now());
         client.schedule(oneTimeTaskB.instance("10"), settableClock.now());
@@ -106,8 +106,8 @@ public class SchedulerClientTest {
     }
 
     @Test
-    public void client_should_be_able_to_fetch_single_scheduled_execution() {
-        SchedulerClient client = SchedulerClientBuilder.create(DB.getSchedulerDataSource(), oneTimeTaskA).build();
+    public void client_should_be_able_to_fetch_single_scheduled_execution() throws SchedulerException {
+        Scheduler client = SchedulerClientBuilder.create(DB.getSchedulerDataSource(), oneTimeTaskA).build();
         client.schedule(oneTimeTaskA.instance("1"), settableClock.now());
 
         assertThat(client.getScheduledExecution(new ScheduledTasks(oneTimeTaskA.getName(), "1")), not(OptionalMatchers.empty()));
@@ -116,7 +116,7 @@ public class SchedulerClientTest {
     }
 
     @Test
-    public void client_should_be_able_to_reschedule_executions() {
+    public void client_should_be_able_to_reschedule_executions() throws SchedulerException {
         String data1 = "data1";
         Map<String, Object> data2 =new HashMap<String, Object>();
         data2.put("data2", "data2");
@@ -136,15 +136,15 @@ public class SchedulerClientTest {
         assertThat(savingHandler.savedData, CoreMatchers.is(data2));
     }
 
-    private int countAllExecutions(SchedulerClient client) {
+    private int countAllExecutions(Scheduler client) throws SchedulerException {
         AtomicInteger counter = new AtomicInteger(0);
-        client.getScheduledExecutions((ScheduledExecution<Object> execution) -> {counter.incrementAndGet();});
+        client.getScheduledExecutions(e -> {counter.incrementAndGet();});
         return counter.get();
     }
 
-    private <T> int countExecutionsForTask(SchedulerClient client, String taskName, Class<T> dataClass) {
+    private <T> int countExecutionsForTask(Scheduler client, String taskName, Class<T> dataClass) throws SchedulerException {
         AtomicInteger counter = new AtomicInteger(0);
-        client.getScheduledExecutionsForTask(taskName, dataClass, (ScheduledExecution<T> execution) -> {counter.incrementAndGet();});
+        client.getScheduledExecutionsForTask(taskName, e -> {counter.incrementAndGet();});
         return counter.get();
     }
 

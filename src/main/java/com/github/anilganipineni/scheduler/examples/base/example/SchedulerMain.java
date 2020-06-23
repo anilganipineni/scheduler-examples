@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.base.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.schedule.FixedDelay;
@@ -74,8 +75,7 @@ public class SchedulerMain {
                 });
 
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource, onetime1, onetime2)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource, onetime1, onetime2)
                 .startTasks(Arrays.asList(recurring1))
                 .build();
 

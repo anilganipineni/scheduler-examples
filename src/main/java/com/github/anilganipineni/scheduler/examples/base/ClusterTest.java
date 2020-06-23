@@ -22,6 +22,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.ExecutionOperations;
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.schedule.ScheduleFactory;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
@@ -103,13 +104,13 @@ public class ClusterTest {
     }
 
     private Scheduler createScheduler(String name, Task task, TestTasks.SimpleStatsRegistry stats) {
-        return Scheduler.create(DB.getSchedulerDataSource(), Lists.newArrayList(task))
+        return SchedulerBuilder.create(DB.getSchedulerDataSource(), Lists.newArrayList(task))
                 .schedulerName(new SchedulerName.Fixed(name)).pollingInterval(Duration.ofMillis(0))
                 .heartbeatInterval(Duration.ofMillis(100)).statsRegistry(stats).build();
     }
 
     private Scheduler createSchedulerRecurring(String name, RecurringTask task, TestTasks.SimpleStatsRegistry stats) {
-        return Scheduler.create(DB.getSchedulerDataSource())
+        return SchedulerBuilder.create(DB.getSchedulerDataSource())
             .startTasks(task)
             .schedulerName(new SchedulerName.Fixed(name))
             .pollingInterval(Duration.ofMillis(0))

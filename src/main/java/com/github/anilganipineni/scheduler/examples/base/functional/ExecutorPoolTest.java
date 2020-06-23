@@ -17,6 +17,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.examples.base.EmbeddedPostgresqlExtension;
 import com.github.anilganipineni.scheduler.examples.base.StopSchedulerExtension;
 import com.github.anilganipineni.scheduler.examples.base.TestTasks;
@@ -67,7 +68,7 @@ public class ExecutorPoolTest {
             TestableRegistry.Condition condition = TestableRegistry.Conditions.completed(executionsToRun);
             TestableRegistry registry = TestableRegistry.create().waitConditions(condition).build();
 
-            Scheduler scheduler = Scheduler.create(postgres.getSchedulerDataSource(), task)
+            Scheduler scheduler = SchedulerBuilder.create(postgres.getSchedulerDataSource(), task)
                 .pollingLimit(pollingLimit)
                 .threads(threads)
                 .pollingInterval(Duration.ofMinutes(1))

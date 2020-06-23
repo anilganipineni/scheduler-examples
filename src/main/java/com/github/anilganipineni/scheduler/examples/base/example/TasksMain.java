@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.base.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.schedule.FixedDelay;
@@ -36,8 +37,7 @@ public class TasksMain {
                     System.out.println("Executed!");
                 });
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource)
                 .startTasks(hourlyTask)
                 .threads(5)
                 .build();
@@ -53,8 +53,7 @@ public class TasksMain {
                     System.out.println("Executed! Custom data, Id: " + inst.getTaskId());
                 });
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource, myAdhocTask)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource, myAdhocTask)
                 .threads(5)
                 .build();
 

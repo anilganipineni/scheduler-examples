@@ -13,6 +13,8 @@ import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.ExecutionContext;
 import com.github.anilganipineni.scheduler.ExecutionOperations;
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
+import com.github.anilganipineni.scheduler.SchedulerImpl;
 import com.github.anilganipineni.scheduler.StatsRegistry.SchedulerStatsEvent;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.base.EmbeddedPostgresqlExtension;
@@ -36,12 +38,12 @@ public class DeadExecutionTest {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
         	ExecutionHandler executionHandler = new ExecutionHandler() {
 				/**
-				 * @param scheduler
-				 * @param clock
+				 * @see com.github.anilganipineni.scheduler.task.handler.ExecutionHandler#onStartup(com.github.anilganipineni.scheduler.SchedulerImpl, com.github.anilganipineni.scheduler.schedule.Clock)
 				 */
 				@Override
-				public void onStartup(Scheduler scheduler, Clock clock) {
+				public void onStartup(SchedulerImpl scheduler, Clock clock) {
 					// TODO Auto-generated method stub
+					
 				}
 				/**
 				 * @param task
@@ -68,7 +70,7 @@ public class DeadExecutionTest {
 
             TestableRegistry registry = TestableRegistry.create().waitConditions(completedCondition).build();
 
-            Scheduler scheduler = Scheduler.create(postgres.getSchedulerDataSource(), customTask)
+            Scheduler scheduler = SchedulerBuilder.create(postgres.getSchedulerDataSource(), customTask)
                 .pollingInterval(Duration.ofMillis(100))
                 .heartbeatInterval(Duration.ofMillis(100))
                 .statsRegistry(registry)

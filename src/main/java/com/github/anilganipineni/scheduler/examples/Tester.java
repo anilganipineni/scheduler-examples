@@ -211,7 +211,7 @@ public class Tester {
 			 */
 			@Override
 			public DataSourceType dataSourceType() {
-				return DataSourceType.CASSANDRA;
+				return DataSourceType.RDBMS;
 			}
 			/**
 			 * @see com.github.anilganipineni.scheduler.dao.SchedulerDataSource#rdbmsDataSource()

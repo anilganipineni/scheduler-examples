@@ -20,6 +20,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import com.github.anilganipineni.scheduler.ExecutionContext;
 import com.github.anilganipineni.scheduler.ExecutionOperations;
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerImpl;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
@@ -63,7 +64,7 @@ public class DeadExecutionsTest {
 
         jdbcTaskRepository = new JdbcTaskRepository(DB.getDataSource(), taskResolver, new SchedulerName.Fixed("scheduler1"));
 
-        scheduler = new Scheduler(settableClock,
+        scheduler = new SchedulerImpl(settableClock,
                 jdbcTaskRepository,
                 taskResolver,
                 1,

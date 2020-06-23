@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.base.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
@@ -22,8 +23,7 @@ public class EnableImmediateExecutionMain {
                     System.out.println("Executed!");
                 });
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource, onetimeTask)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource, onetimeTask)
                 .pollingInterval(Duration.ofSeconds(5))
                 .enableImmediateExecution()
                 .build();

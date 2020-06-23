@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerImpl;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
@@ -23,6 +24,7 @@ import com.github.anilganipineni.scheduler.Waiter;
 import com.github.anilganipineni.scheduler.dao.JdbcTaskRepository;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.base.helper.SettableClock;
+import com.github.anilganipineni.scheduler.exception.SchedulerException;
 import com.github.anilganipineni.scheduler.schedule.FixedDelay;
 import com.github.anilganipineni.scheduler.task.OneTimeTask;
 import com.github.anilganipineni.scheduler.task.RecurringTask;
@@ -51,7 +53,7 @@ public class SchedulerTest {
         final StatsRegistry statsRegistry = StatsRegistry.NOOP;
         TaskResolver taskResolver = new TaskResolver(statsRegistry, clock, Arrays.asList(tasks));
         JdbcTaskRepository taskRepository = new JdbcTaskRepository(postgres.getDataSource(), taskResolver, new SchedulerName.Fixed("scheduler1"));
-        return new Scheduler(clock, taskRepository, taskResolver, 1, executor, new SchedulerName.Fixed("name"), new Waiter(Duration.ZERO), Duration.ofSeconds(1), false, statsRegistry, 10_000, Duration.ofDays(14), new ArrayList<>());
+        return new SchedulerImpl(clock, taskRepository, taskResolver, 1, executor, new SchedulerName.Fixed("name"), new Waiter(Duration.ZERO), Duration.ofSeconds(1), false, statsRegistry, 10_000, Duration.ofDays(14), new ArrayList<>());
     }
 
     @Test
@@ -80,7 +82,12 @@ public class SchedulerTest {
         ScheduledTasks oneTimeTaskInstance = oneTimeTask.instance(instanceId);
         scheduler.schedule(oneTimeTaskInstance, executionTime);
         Instant reScheduledExecutionTime = clock.now().plus(Duration.ofMinutes(2));
-        scheduler.reschedule(oneTimeTaskInstance, reScheduledExecutionTime);
+        try {
+			scheduler.reschedule(oneTimeTaskInstance, reScheduledExecutionTime);
+		} catch (SchedulerException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
         scheduler.executeDue();
         assertThat(handler.timesExecuted, is(0));
 
@@ -102,7 +109,12 @@ public class SchedulerTest {
         String instanceId = "1";
         ScheduledTasks oneTimeTaskInstance = oneTimeTask.instance(instanceId);
         scheduler.schedule(oneTimeTaskInstance, executionTime);
-        scheduler.cancel(oneTimeTaskInstance);
+        try {
+			scheduler.cancel(oneTimeTaskInstance);
+		} catch (SchedulerException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
         scheduler.executeDue();
         assertThat(handler.timesExecuted, is(0));
 

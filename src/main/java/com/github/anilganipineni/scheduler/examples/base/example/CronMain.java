@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.dao.SchedulerDataSource;
 import com.github.anilganipineni.scheduler.examples.base.HsqlTestDatabaseExtension;
 import com.github.anilganipineni.scheduler.schedule.Schedule;
@@ -25,8 +26,7 @@ public class CronMain {
                     System.out.println(Instant.now().getEpochSecond() + "s  -  Cron-schedule!");
                 });
 
-        final Scheduler scheduler = Scheduler
-                .create(dataSource)
+        final Scheduler scheduler = SchedulerBuilder.create(dataSource)
                 .startTasks(cronTask)
                 .pollingInterval(Duration.ofSeconds(1))
                 .build();

@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.ExecutionComplete;
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.examples.base.EmbeddedPostgresqlExtension;
 import com.github.anilganipineni.scheduler.examples.base.StopSchedulerExtension;
 import com.github.anilganipineni.scheduler.examples.base.TestTasks;
@@ -50,7 +51,7 @@ public class ImmediateExecutionTest {
 
             TestableRegistry registry = TestableRegistry.create().waitConditions(executeDueCondition, completedCondition).build();
 
-            Scheduler scheduler = Scheduler.create(postgres.getSchedulerDataSource(), task)
+            Scheduler scheduler = SchedulerBuilder.create(postgres.getSchedulerDataSource(), task)
                 .pollingInterval(Duration.ofMinutes(1))
                 .enableImmediateExecution()
                 .statsRegistry(registry)

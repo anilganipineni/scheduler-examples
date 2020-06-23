@@ -24,6 +24,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import org.slf4j.LoggerFactory;
 
 import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
@@ -70,7 +71,7 @@ public abstract class CompatibilityTest {
         recurringWithData = TestTasks.recurringWithData("recurringWithData", map, FixedDelay.of(Duration.ofMillis(10)), new DoNothingHandler());
 
         statsRegistry = new TestTasks.SimpleStatsRegistry();
-        scheduler = Scheduler.create(getDataSource(), Lists.newArrayList(oneTime, recurring))
+        scheduler = SchedulerBuilder.create(getDataSource(), Lists.newArrayList(oneTime, recurring))
                 .pollingInterval(Duration.ofMillis(10))
                 .heartbeatInterval(Duration.ofMillis(100))
                 .statsRegistry(statsRegistry)
@@ -143,7 +144,7 @@ public abstract class CompatibilityTest {
         jdbcTaskRepository.updateHeartbeat(pickedExecution.get(), now.plusSeconds(1));
         assertThat(jdbcTaskRepository.getDeadExecutions(now.plus(Duration.ofDays(1))), hasSize(1));
 
-        jdbcTaskRepository.reschedule(pickedExecution.get(), now.plusSeconds(1), now.minusSeconds(1), now.minusSeconds(1), 0);
+        jdbcTaskRepository.reschedule(pickedExecution.get(), now.plusSeconds(1), now.minusSeconds(1), now.minusSeconds(1), 0, null);
         assertThat(jdbcTaskRepository.getDue(now, POLLING_LIMIT), hasSize(0));
         assertThat(jdbcTaskRepository.getDue(now.plus(Duration.ofMinutes(1)), POLLING_LIMIT), hasSize(1));
 

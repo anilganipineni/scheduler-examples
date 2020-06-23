@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.anilganipineni.scheduler.Scheduler;
+import com.github.anilganipineni.scheduler.SchedulerImpl;
 import com.github.anilganipineni.scheduler.SchedulerName;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;
@@ -35,7 +35,7 @@ import com.github.anilganipineni.scheduler.task.Task;
 /**
  * @author akganipineni
  */
-public class ManualScheduler extends Scheduler {
+public class ManualScheduler extends SchedulerImpl {
     /**
      * The <code>Logger</code> instance for this class.
      */
@@ -70,7 +70,7 @@ public class ManualScheduler extends Scheduler {
 
     public void start() {
         logger.info("Starting manual scheduler. Executing on-startup tasks.");
-        executeOnStartup();
+        // executeOnStartup(); FIXME 
     }
 
 }
