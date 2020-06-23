@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.anilganipineni.scheduler.examples.base.helper;
+package com.github.anilganipineni.scheduler;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -30,6 +30,7 @@ import com.github.anilganipineni.scheduler.TaskResolver;
 import com.github.anilganipineni.scheduler.Waiter;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.dao.SchedulerRepository;
+import com.github.anilganipineni.scheduler.examples.base.helper.SettableClock;
 import com.github.anilganipineni.scheduler.task.Task;
 
 /**
@@ -70,7 +71,6 @@ public class ManualScheduler extends SchedulerImpl {
 
     public void start() {
         logger.info("Starting manual scheduler. Executing on-startup tasks.");
-        // executeOnStartup(); FIXME 
+        executeInitialTasks();
     }
-
 }

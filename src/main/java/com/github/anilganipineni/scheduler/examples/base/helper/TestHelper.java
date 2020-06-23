@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import com.github.anilganipineni.scheduler.ManualScheduler;
 import com.github.anilganipineni.scheduler.SchedulerBuilder;
 import com.github.anilganipineni.scheduler.StatsRegistry;
 import com.github.anilganipineni.scheduler.TaskResolver;

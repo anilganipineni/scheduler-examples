@@ -16,11 +16,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.anilganipineni.scheduler.ExecutionContext;
+import com.github.anilganipineni.scheduler.ManualScheduler;
 import com.github.anilganipineni.scheduler.Scheduler;
 import com.github.anilganipineni.scheduler.SchedulerClientBuilder;
 import com.github.anilganipineni.scheduler.dao.ScheduledTasks;
 import com.github.anilganipineni.scheduler.examples.base.TestTasks.SavingHandler;
-import com.github.anilganipineni.scheduler.examples.base.helper.ManualScheduler;
 import com.github.anilganipineni.scheduler.examples.base.helper.SettableClock;
 import com.github.anilganipineni.scheduler.examples.base.helper.TestHelper;
 import com.github.anilganipineni.scheduler.exception.SchedulerException;
