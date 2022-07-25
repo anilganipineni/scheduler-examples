@@ -9,7 +9,7 @@
 
 	<packaging>jar</packaging>
 
-	<version>0.4</version>
+	<version>0.5</version>
 
 	<name>Java Scheduler Examples</name>
 	<description>The Java Scheduler which supports both RDBMS and Cassandra</description>
@@ -56,7 +56,7 @@
 
 		<spring.version>4.3.2.RELEASE</spring.version>
 		<datastax.version>3.3.0</datastax.version>
-		<scheduler.version>0.4</scheduler.version>
+		<scheduler.version>0.5</scheduler.version>
 	</properties>
 
 	<dependencies>
